@@ -19,6 +19,9 @@ docker build . -t ontocosmtool
 
 # start the container
 docker run -d -p 5000:5000 --name=OntoCosmTool ontocosmtool
+
+# stop the container
+docker stop OntoCosmTool
 ```
 
 ## Resources
