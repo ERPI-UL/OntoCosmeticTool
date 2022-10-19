@@ -11,8 +11,10 @@ This work is based on OntoCosmetic ontologies however the ontology was instancia
 
 
 # Commands 
-In order to start the application, you need to have Docker. 
+In order to start the application, there is two alternatives : using Docker or python venv. 
 
+## Docker
+Here are the main commmands to start the app using docker. It requires to install Docker on the host machine.
 ```sh
 # create the container
 docker build . -t ontocosmtool
@@ -21,6 +23,26 @@ docker build . -t ontocosmtool
 docker run -d -p 5000:5000 --name=OntoCosmTool ontocosmtool
 
 # stop the container
+docker stop OntoCosmTool
+```
+
+## Venv
+To use this alternive, it requires Python and Pip on the host system. As the reasoner (Pellet) requires Java, you may have installed Java on the host machine.
+
+```sh
+# create the virtual environment
+python3 -m venv .
+
+# activate the virtual environment (Windows)
+Scripts\activate 
+
+# install required dependencies (do it once, the first time)
+pip install -r requirements.txt
+
+# start the web service 
+python3 run.py
+
+# stop the virtual environment
 docker stop OntoCosmTool
 ```
 
