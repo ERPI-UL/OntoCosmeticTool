@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/table.html' import render_table %}
+
+{% block content %}
+<h1>Formulation Details</h1>
+<p></p>
+<h2></h2>
+
+<h3>Product Properties</h3>
+<table class="table">
+    <tr>
+        <td>Stability</td>
+        <td>{{ formul.stability|join(', ') }}</td>
+    </tr>
+    <tr>
+        <td>Oilyness</td>
+        <td>{{ formul.oiliness|join(', ')}}</td>
+    </tr>
+    <tr>
+        <td>Viscosity</td>
+        <td>{{ formul.viscosity|join(', ')}}</td>
+    </tr>
+    <tr>
+        <td>Total Surfactant Qte</td>
+        <td>{{ formul.surfactQte|join(', ')}}</td>
+    </tr>
+    <tr>
+        <td>Total Thickener Qte</td>
+        <td>{{ formul.thickenerQte|join(', ')}}</td>
+    </tr>
+    <tr>
+        <td>Nb Surfactant</td>
+        <td>{{ formul.surfactNb|join(', ')}}</td>
+    </tr>
+    <tr>
+        <td>Total Oily Phase</td>
+        <td>{{ formul.oilyPhaseQte|join(', ')}}</td>
+    </tr>
+</table>
+
+<h3>Dosages</h3>
+{{ render_table(formul.dosages, [('ing', 'Ingredient'), ('qte', 'Quantity')]) }}
+
+<h3>Satisfied Heuristics</h3>
+{{ render_table(heur, [('id', 'ID'), ('description', 'Description')]) }}
+
+<form action={{ url_for("page_formul_details", iri=formul.iri) }}>
+    <input type="hidden" id="action" name="action" value="water">
+    <input class="btn btn-primary text-white" type="submit" value="Calculate Water">
+</form>
+
+<form action={{url_for("page_formul_details", iri=formul.iri)}}>
+    <input type="hidden" id="action" name="action" value="reasoning">
+    <input class="btn btn-primary text-white"  type="submit" value="Reasoning">
+</form>
+
+<form action={{url_for("page_formul_details", iri=formul.iri)}}>
+    <input type="hidden" id="action" name="action" value="surfactantQte">
+    <input class="btn btn-primary text-white"  type="submit" value="Calculate Surfactant Quantity">
+</form>
+
+<form action={{url_for("page_formul_details", iri=formul.iri)}}>
+    <input type="hidden" id="action" name="action" value="surfactantNb">
+    <input class="btn btn-primary text-white"  type="submit" value="Count Surfactant Number">
+</form>
+
+<form action={{url_for("page_formul_details", iri=formul.iri)}}>
+    <input type="hidden" id="action" name="action" value="thickenerQte">
+    <input class="btn btn-primary text-white"  type="submit" value="Calculate Thickener Quantity">
+</form>
+
+<form action={{url_for("page_formul_details", iri=formul.iri)}}>
+    <input type="hidden" id="action" name="action" value="save">
+    <input class="btn btn-primary text-white"  type="submit" value="Save Onto">
+</form>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+Flask
+bootstrap-flask
+Flask-WTF
+owlready2 
+Flask 
+mygene 
+rdflib 
+gunicorn
+cython

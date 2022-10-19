@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% from 'base/utils.html' import render_icon%}
+
+{% block content %}
+    <h1>Formulations</h1>
+<p></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            {% for title in titles %}
+            <th scope="col">{{ title[1] }}</th>
+            {% endfor %}
+            {% if show_actions %}
+            <th scope="col">Actions
+                {% if new_url %}
+                <a class="action-icon text-decoration-none"
+                    {% if new_url.startswith('/') %}
+                    href="{{ new_url }}"
+                    {% else %}
+                    href="{{ url_for(new_url) }}"
+                    {% endif %}
+                    title="{{ config['BOOTSTRAP_TABLE_NEW_TITLE'] }}">
+                    {{ render_icon('plus-circle-fill') }}
+                </a>
+                {% endif %}
+            </th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            {% for title in titles %}
+            {% set key = title[0] %}
+            {% set value = row[key] %}
+            {%- if key == primary_key -%}
+                <th scope="row">
+            {%- else -%}
+                <td>
+            {%- endif -%}
+            {%- if value is string -%}
+                {%- if safe_columns and key in safe_columns -%}
+                    {{ value|safe }}
+                {%- else -%}
+                    {%- if urlize_columns and key in urlize_columns -%}
+                        {{ value|urlize }}
+                    {%- else -%}
+                        {{ value }}
+                    {%- endif -%}
+                {%- endif -%}
+            {%- else -%}
+                {{ value }}
+            {%- endif -%}
+            {%- if key == primary_key -%}
+                </th>
+            {%- else -%}
+                </td>
+            {%- endif -%}
+            {% endfor %}
+            <td>
+                <a class="action-icon text-decoration-none" href="{{url_for('page_formul_details', iri = row['iri'])}}" title="{{ config['BOOTSTRAP_TABLE_VIEW_TITLE'] }}">{{ render_icon('eye-fill') }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
