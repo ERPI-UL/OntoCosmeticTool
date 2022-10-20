@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% from 'base/utils.html' import render_icon%}
 
+{% macro format(value) -%}
+    {% if value %}
+        {% if value is iterable and (value is not string and value is not mapping) %}
+        {{ value|join(', ') }}
+        {% else %}
+        {{ value }}
+        {% endif %}
+    {% else %}
+        -
+    {% endif %}
+{%- endmacro %}
+
 {% block content %}
     <h1>Formulations</h1>
 <p></p>
@@ -46,11 +58,11 @@
                     {%- if urlize_columns and key in urlize_columns -%}
                         {{ value|urlize }}
                     {%- else -%}
-                        {{ value }}
+                        {{ format(value) }}
                     {%- endif -%}
                 {%- endif -%}
             {%- else -%}
-                {{ value }}
+                {{ format(value) }}
             {%- endif -%}
             {%- if key == primary_key -%}
                 </th>

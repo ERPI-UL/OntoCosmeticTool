@@ -1,7 +1,41 @@
+from ast import Try
 import os
+from typing import List
 import uuid
 from owlready2 import *
 onto = get_ontology("./app/static/OntoCosmetic-test4-rulereduced.owl").load()
+
+def format(value):
+    if value:
+        print(type(value))
+        if type(value) is owlready2.prop.IndividualValueList or type(value) is List:
+            return ", ".join(value)
+        else:
+            return value
+    else:
+        return "-"
+
+def getLabels(IRIs):
+    if IRIs:
+        if type(IRIs) is list:
+            iri_label = ""
+            for iri in IRIs:
+                if iri.label.en.first():
+                    iri_label = ", ".join([iri_label, iri.label.en.first()])
+                    print(f"label {iri.label.en.first()}")
+                elif iri.iri:
+                    iri_label = ", ".join([iri_label, iri.iri])
+                    print(f"iri {iri.iri}")
+                else:
+                    iri_label = ", ".join([iri_label, iri])
+            return iri_label
+        else:
+            try: 
+                return IRIs.label.en.first()
+            except:
+                return IRIs
+    else:
+        return "-"
 
 def formulations():
     data = []
@@ -58,10 +92,12 @@ def heuristics():
         tmp_heuristic = {}
         tmp_heuristic['iri'] = Heuristic.iri
         tmp_heuristic['name'] = Heuristic.name
-        tmp_heuristic['description'] = Heuristic.hasHeuristicDescription
-        tmp_heuristic['ingType'] = Heuristic.hasHeuristicIngType
-        tmp_heuristic['ingProperty'] = Heuristic.hasHeuristicIngProp
-        tmp_heuristic['prodProperty'] = Heuristic.hasHeuristicProdProp
+        tmp_heuristic['description'] = format(Heuristic.hasHeuristicDescription)
+        tmp_heuristic['ingType'] = getLabels(Heuristic.hasHeuristicIngType)
+        tmp_heuristic['ingProperty'] = getLabels(Heuristic.hasHeuristicIngProp)
+        for product_property in Heuristic.hasHeuristicProdProp:
+            tmp_heuristic['prodProperty'] = getLabels(product_property)
+        #tmp_heuristic['prodProperty'] = Heuristic.hasHeuristicProdProp
         data.append(tmp_heuristic)
     return data
 

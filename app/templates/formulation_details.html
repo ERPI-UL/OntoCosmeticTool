@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% from 'bootstrap5/table.html' import render_table %}
 
+{% macro format(value) -%}
+    {% if value %}
+        {% if value is iterable and (value is not string and value is not mapping) %}
+        {{ value|join(', ') }}
+        {% else %}
+        {{ value }}
+        {% endif %}
+    {% else %}
+        -
+    {% endif %}
+{%- endmacro %}
 {% block content %}
 <h1>Formulation Details</h1>
 <p></p>
@@ -10,31 +21,31 @@
 <table class="table">
     <tr>
         <td>Stability</td>
-        <td>{{ formul.stability|join(', ') }}</td>
+        <td>{{ format(formul.stability) }}</td>
     </tr>
     <tr>
         <td>Oilyness</td>
-        <td>{{ formul.oiliness|join(', ')}}</td>
+        <td>{{ format(formul.oiliness)}}</td>
     </tr>
     <tr>
         <td>Viscosity</td>
-        <td>{{ formul.viscosity|join(', ')}}</td>
+        <td>{{ format(formul.viscosity)}}</td>
     </tr>
     <tr>
         <td>Total Surfactant Qte</td>
-        <td>{{ formul.surfactQte|join(', ')}}</td>
+        <td>{{ format(formul.surfactQte)}}</td>
     </tr>
     <tr>
         <td>Total Thickener Qte</td>
-        <td>{{ formul.thickenerQte|join(', ')}}</td>
+        <td>{{ format(formul.thickenerQte)}}</td>
     </tr>
     <tr>
         <td>Nb Surfactant</td>
-        <td>{{ formul.surfactNb|join(', ')}}</td>
+        <td>{{ format(formul.surfactNb)}}</td>
     </tr>
     <tr>
         <td>Total Oily Phase</td>
-        <td>{{ formul.oilyPhaseQte|join(', ')}}</td>
+        <td>{{ format(formul.oilyPhaseQte)}}</td>
     </tr>
 </table>
 
