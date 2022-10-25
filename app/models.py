@@ -281,9 +281,8 @@ def calculateSurfactantQuantity(formulation):
     sufactVol = 0.0
     listDosages = formulation.hasDosage
     for dosage in listDosages:
-        #ings = dosage.hasIngredient
-        if onto.Surfactant.iri in dosage.isQuantifying[0].is_a:
-            sufactVol += dosage.hasQuantity[0]
+        if type(dosage.isQuantifying) is onto.Surfactant:
+            sufactVol += dosage.hasQuantity
     formulation.hasTotalSurfactantQuantity = sufactVol
 
 def calculatePrice(formulationIRI):
