@@ -294,7 +294,7 @@ def calculatePrice(formulationIRI):
         print(Ingredient)
         print(Ingredient.hasPricePerKilogram)
         tempPrice = tempPrice + float(Ingredient.hasPricePerKilogram if Ingredient.hasPricePerKilogram else 0) * float(dosage.hasQuantity if dosage.hasQuantity else 0 )
-    formulationIRI.hasTotalPrice = tempPrice
+    formulationIRI.hasTotalPrice = tempPrice /100
 
 def saveFomulation(ingredients_iri, ingredients_qte):
     if len(ingredients_iri) != len(ingredients_qte):
