@@ -67,6 +67,9 @@ def formulation(iri):
     data['oiliness'] = Formulation.hasProductOiliness
     data['viscosity'] = Formulation.hasProductViscosity
     data['price'] = Formulation.hasTotalPrice
+    data['HLB'] = Formulation.hasCalculatedHLB
+    data['RHLB'] = Formulation.hasCalculatedRHLB
+    data['ratio'] = Formulation.hasHlbOverRhlbRatio
     for Dosage in dosages:
         tmp_dosage = {}
         tmp_dosage['ing'] = Dosage.isQuantifying

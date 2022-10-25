@@ -474,6 +474,7 @@
     <!-- https://purl.org/ontocosmetic#hasHlbOverRhlbRatio -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasHlbOverRhlbRatio">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:comment xml:lang="en">define the ratio of the calculated HLB over the calulated required HLB of a formulation. It is used to evaluate the surfactant and emollient balance.</rdfs:comment>
         <rdfs:label xml:lang="en">has HLB over RHLB ratio</rdfs:label>
     </owl:DatatypeProperty>
