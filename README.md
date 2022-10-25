@@ -47,7 +47,7 @@ docker stop OntoCosmTool
 ```
 
 ## Resources
-
+[Jinja2 HTML Template Designer Documentation](https://jinja.palletsprojects.com/en/3.1.x/templates/)
 [bootstrap flask](https://bootstrap-flask.readthedocs.io/en/stable/)
 [OWLREADY2 doc](https://owlready2.readthedocs.io/en/latest/index.html)
 
