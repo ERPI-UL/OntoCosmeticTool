@@ -404,6 +404,7 @@
     <!-- https://purl.org/ontocosmetic#hasCalculatedHLB -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasCalculatedHLB">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <rdfs:comment xml:lang="en">the final HLB of the surfactant mixture that compose the formulation</rdfs:comment>
@@ -411,15 +412,21 @@
     
 
 
-    <!-- https://purl.org/ontocosmetic#hasEquivalentHLB -->
+    <!-- https://purl.org/ontocosmetic#hasCalculatedRHLB -->
 
-    <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasEquivalentHLB"/>
+    <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasCalculatedRHLB">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">the final required HLB of the emmolient mixture that compose the formulation</rdfs:comment>
+    </owl:DatatypeProperty>
     
 
 
     <!-- https://purl.org/ontocosmetic#hasHLB -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasHLB">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Surfactant"/>
         <rdfs:comment xml:lang="en">Quantify the HLB that a surfactant can have</rdfs:comment>
     </owl:DatatypeProperty>
@@ -460,6 +467,15 @@
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasHeuristicSource">
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <rdfs:comment xml:lang="en">Provides the source of the heuristic (from literature or experience)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#hasHlbOverRhlbRatio -->
+
+    <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasHlbOverRhlbRatio">
+        <rdfs:comment xml:lang="en">define the ratio of the calculated HLB over the calulated required HLB of a formulation. It is used to evaluate the surfactant and emollient balance.</rdfs:comment>
+        <rdfs:label xml:lang="en">has HLB over RHLB ratio</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -526,6 +542,7 @@
     <!-- https://purl.org/ontocosmetic#hasRequiredHLB -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasRequiredHLB">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Emollient"/>
         <rdfs:comment xml:lang="en">the RHLB that an emollient can have.</rdfs:comment>
     </owl:DatatypeProperty>
@@ -3746,7 +3763,6 @@ SRM = Synthetic Raw Material</rdfs:comment>
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Surfactant"/>
         <hasIonicClass rdf:resource="https://purl.org/ontocosmetic#nonionic"/>
-        <hasHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">13.0</hasHLB>
         <hasHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">14.5</hasHLB>
         <hasINCIcode>Sucrose Stearate</hasINCIcode>
         <rdfs:label>Sucrose Stearate</rdfs:label>
@@ -4539,6 +4555,7 @@ SRM = Synthetic Raw Material</rdfs:comment>
         <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_1"/>
         <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_2"/>
         <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_thickener_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_water_1"/>
         <hasNbSurfactantIng rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</hasNbSurfactantIng>
         <hasTotalPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.53</hasTotalPrice>
         <hasTotalSurfactantQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasTotalSurfactantQuantity>
@@ -4918,6 +4935,7 @@ It is related to the sensorial term of thickness.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#water">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
+        <rdfs:label xml:lang="en">Water</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -5776,6 +5794,12 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="https://purl.org/ontocosmeticlowQte">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://purl.org/ontocosmetic#formu">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://purl.org/ontocosmetic#ratio">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description>
@@ -7198,6 +7222,76 @@ It is related to the sensorial term of thickness.</rdfs:comment>
                         <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                     </rdf:Description>
                 </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Equivalence HLB &amp; RHLB</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+                        <swrl:argument1 rdf:resource="https://purl.org/ontocosmetic#formu"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://purl.org/ontocosmetic#hasHlbOverRhlbRatio"/>
+                                <swrl:argument1 rdf:resource="https://purl.org/ontocosmetic#formu"/>
+                                <swrl:argument2 rdf:resource="https://purl.org/ontocosmetic#ratio"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="https://purl.org/ontocosmetic#ratio"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.1</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="https://purl.org/ontocosmetic#isValidatedBy"/>
+                        <swrl:argument1 rdf:resource="https://purl.org/ontocosmetic#formu"/>
+                        <swrl:argument2 rdf:resource="https://purl.org/ontocosmetic#A1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
             </rdf:Description>
         </swrl:head>
     </rdf:Description>

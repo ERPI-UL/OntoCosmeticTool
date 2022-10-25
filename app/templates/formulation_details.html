@@ -92,6 +92,12 @@
             <input class="btn btn-primary text-white"  type="submit" value="Calculate Thickener Quantity">
         </form>
     </div>
+    <div class="col-sm">
+        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+            <input type="hidden" id="action" name="action" value="HLB">
+            <input class="btn btn-primary text-white"  type="submit" value="Calculate Emollient & Surfactant balance">
+        </form>
+    </div>
 </div>
 
 <h4>Misc</h4>

@@ -267,6 +267,32 @@ def calculateThickenerQuantity(formulation):
             thickenerQte += dosage.hasQuantity
     formulation.hasTotalThickenerQuantity = thickenerQte 
 
+def calculateHLB(formulation):
+    calculatedHLB = 0.0
+    listDosages = formulation.hasDosage
+    for dosage in listDosages:
+        if type(dosage.isQuantifying) is onto.Surfactant:
+            Surfactant = dosage.isQuantifying
+            calculatedHLB += dosage.hasQuantity * Surfactant.hasHLB
+    formulation.hasCalculatedHLB = calculatedHLB
+
+def calculateRHLB(formulation):
+    calculatedRHLB = 0.0
+    listDosages = formulation.hasDosage
+    for dosage in listDosages:
+        if type(dosage.isQuantifying) is onto.Emollient:
+            Emollient = dosage.isQuantifying
+            thickenerQte += dosage.hasQuantity * Emollient.hasRequiredHLB
+    formulation.hasCalculatedRHLB = calculatedRHLB
+
+def calculateHLBoverRHLB(formulation):
+    calculateHLB(formulation)
+    calculateRHLB(formulation)
+    hlb = formulation.hasCalculatedHLB
+    rhlb = formulation.hasCalculatedRHLB
+    ratio = hlb/rhlb
+    formulation.hasHlbOverRhlbRatio = ratio
+
 def countNbSurfactant(formulation):
     nbSurfactant = 0
     
@@ -291,7 +317,7 @@ def calculatePrice(formulationIRI):
         Ingredient = dosage.isQuantifying
         print(Ingredient)
         print(Ingredient.hasPricePerKilogram)
-        tempPrice = tempPrice + float(Ingredient.hasPricePerKilogram if Ingredient.hasPricePerKilogram else 0) * float(dosage.hasQuantity if dosage.hasQuantity else 0 )
+        tempPrice += float(Ingredient.hasPricePerKilogram if Ingredient.hasPricePerKilogram else 0) * float(dosage.hasQuantity if dosage.hasQuantity else 0 )
     formulationIRI.hasTotalPrice = tempPrice /100
 
 def saveFomulation(ingredients_iri, ingredients_qte):
@@ -330,6 +356,8 @@ def actionOnFormulation(iri, ONTO_ID, action):
         completeWithWater(Formulation)
     elif action =="price":
         calculatePrice(Formulation)
+    elif action =="HLB":
+        calculateHLBoverRHLB(Formulation)
     elif action =="reasoning":
         with onto_tmp:
             sync_reasoner_pellet([onto, onto_tmp], infer_property_values = True, infer_data_property_values = True)
