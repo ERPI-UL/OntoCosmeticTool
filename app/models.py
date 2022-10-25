@@ -271,22 +271,26 @@ def calculateThickenerQuantity(formulation):
     formulation.hasTotalThickenerQuantity = thickenerQte 
 
 def calculateHLB(formulation):
+    qteSurfactant = 0.0
     calculatedHLB = 0.0
     listDosages = formulation.hasDosage
     for dosage in listDosages:
         if type(dosage.isQuantifying) is onto.Surfactant:
             Surfactant = dosage.isQuantifying
+            qteSurfactant += dosage.hasQuantity
             calculatedHLB += dosage.hasQuantity * Surfactant.hasHLB
-    formulation.hasCalculatedHLB = calculatedHLB
+    formulation.hasCalculatedHLB = calculatedHLB /qteSurfactant
 
 def calculateRHLB(formulation):
+    qteEmollient = 0.0
     calculatedRHLB = 0.0
     listDosages = formulation.hasDosage
     for dosage in listDosages:
         if type(dosage.isQuantifying) is onto.Emollient:
             Emollient = dosage.isQuantifying
+            qteEmollient += dosage.hasQuantity
             calculatedRHLB += dosage.hasQuantity * Emollient.hasRequiredHLB
-    formulation.hasCalculatedRHLB = calculatedRHLB
+    formulation.hasCalculatedRHLB = calculatedRHLB / qteEmollient
 
 def calculateHLBoverRHLB(formulation):
     calculateHLB(formulation)
