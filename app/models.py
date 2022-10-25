@@ -263,10 +263,9 @@ def calculateThickenerQuantity(formulation):
     thickenerQte = 0.0
     listDosages = formulation.hasDosage
     for dosage in listDosages:
-        #ings = dosage.hasIngredient
-        if onto.Thickener.iri in dosage.isQuantifying[0].is_a:
-            thickenerQte += dosage.hasQuantity[0]
-    formulation.hasTotalThickenerQuantity.append(thickenerQte) 
+        if type(dosage.isQuantifying) is onto.Thickener:
+            thickenerQte += dosage.hasQuantity
+    formulation.hasTotalThickenerQuantity = thickenerQte 
 
 def countNbSurfactant(formulation):
     nbSurfactant = 0
