@@ -992,7 +992,7 @@
     <!-- https://purl.org/ontocosmetic#Formulation -->
 
     <owl:Class rdf:about="https://purl.org/ontocosmetic#Formulation">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ontocosmetic#Mixture"/>
+        <rdfs:subClassOf rdf:resource="https://purl.org/ontocosmetic#Substance"/>
         <rdfs:comment xml:lang="en">Designed mixture of ingredients combined with an appropriated process. It can potentially take any substance form. It is a technical created object. It can have different forms: solid, liquid, gas. And it can be homogeneous (solutions) or heterogeneous (colloidal system). It is a subclass of substance and a super class of solution, mixture, emulsion, colloid.</rdfs:comment>
         <rdfs:seeAlso rdf:resource="https://purl.org/ontocosmetic#Mixture"/>
         <rdfs:seeAlso xml:lang="en">Blend</rdfs:seeAlso>
@@ -1297,21 +1297,6 @@
     <owl:Class rdf:about="https://purl.org/ontocosmetic#Oiliness">
         <rdfs:subClassOf rdf:resource="https://purl.org/ontocosmetic#FormulationPropertyState"/>
         <rdfs:label xml:lang="en">After Feel - Oiliness</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#OneIngredient -->
-
-    <owl:Class rdf:about="https://purl.org/ontocosmetic#OneIngredient">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ontocosmetic#hasIngredient"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://purl.org/ontocosmetic#Mixture"/>
     </owl:Class>
     
 
@@ -1757,7 +1742,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#A1">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngProp rdf:resource="https://purl.org/ontocosmetic#HLB"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#Stable"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#stability"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#Stable"/>
         <hasHeuristicDescription xml:lang="en">An emulsion tends to be more stable using a suitable combination of surfactants with a HLB equivalent to the HLB required by the emollients.</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">General</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1769,7 +1755,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#A2">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#surfactant"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#Stable"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#stability"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#Stable"/>
         <hasHeuristicDescription xml:lang="en">It is recommended to use more than one surfactant.</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">General</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1780,7 +1767,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#A3">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#Stable"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#stability"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#Stable"/>
         <hasHeuristicDescription xml:lang="en">The quantity of surfactant should be  between 14 to 20% of the total oily phase.</hasHeuristicDescription>
         <hasHeuristicHighThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">20.0</hasHeuristicHighThreshold>
         <hasHeuristicLowThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">14.0</hasHeuristicLowThreshold>
@@ -1810,7 +1798,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#B11">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicProcessOutcome rdf:resource="https://purl.org/ontocosmetic#small_droplet"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#high_viscosity"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#viscosity"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#high_viscosity"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is high if droplet size is small.</hasHeuristicDescription>
         <hasHeuristicSource>Matrix</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1822,7 +1811,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#B12">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicProcessOutcome rdf:resource="https://purl.org/ontocosmetic#med_droplet"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#med_viscosity"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#viscosity"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#med_viscosity"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is medium if droplet size is medium.</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">Matrix</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1834,7 +1824,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#B13">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicProcessOutcome rdf:resource="https://purl.org/ontocosmetic#med_droplet"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#low_viscosity"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#viscosity"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#low_viscosity"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is low if droplet size is high.</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">Matrix</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1846,7 +1837,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C11">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngProp rdf:resource="https://purl.org/ontocosmetic#oily_phase"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#non_oily"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#oiliness"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#non_oily"/>
         <hasHeuristicDescription xml:lang="en">If the oily phase is less than 15%, final sensation is : watery, non-oily, fresh.</hasHeuristicDescription>
         <hasHeuristicHighThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">15.0</hasHeuristicHighThreshold>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
@@ -1858,7 +1850,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C12">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#oily"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#oiliness"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#oily"/>
         <hasHeuristicDescription xml:lang="en">If the oily phase is more than 25%, final sensation is : rich, oily.</hasHeuristicDescription>
         <hasHeuristicLowThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">25.0</hasHeuristicLowThreshold>
         <hasHeuristicSource>Heuristic</hasHeuristicSource>
@@ -1887,7 +1880,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C21">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngProp rdf:resource="https://purl.org/ontocosmetic#spreading"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#high_absorption_rate"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#absorption_rate"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#high_absorption_rate"/>
         <hasHeuristicDescription xml:lang="en">If most of the emollients are of high absorption, product absorption sensation is : high</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1899,7 +1893,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C22">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngProp rdf:resource="https://purl.org/ontocosmetic#spreading"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#med_absorption_rate"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#absorption_rate"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#med_absorption_rate"/>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
     </owl:NamedIndividual>
     
@@ -1910,7 +1905,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C23">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngProp rdf:resource="https://purl.org/ontocosmetic#spreading"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#low_absorption_rate"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#absorption_rate"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#low_absorption_rate"/>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
     </owl:NamedIndividual>
     
@@ -1921,7 +1917,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C31">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#thickener"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#high_viscosity"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#viscosity"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#high_viscosity"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is high if the proportion of thickener is high (0.8-1%).</hasHeuristicDescription>
         <hasHeuristicLowThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8</hasHeuristicLowThreshold>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
@@ -1934,7 +1931,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C32">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#thickener"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#med_viscosity"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#viscosity"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#med_viscosity"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is medium if the proportion of thickener is medium (0.2-0.8%).</hasHeuristicDescription>
         <hasHeuristicHighThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8</hasHeuristicHighThreshold>
         <hasHeuristicLowThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.2</hasHeuristicLowThreshold>
@@ -1948,7 +1946,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C33">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#thickener"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#low_viscosity"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#viscosity"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#low_viscosity"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is low if the proportion of thickener is low (0 - 0.2%).</hasHeuristicDescription>
         <hasHeuristicHighThreshold rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.2</hasHeuristicHighThreshold>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
@@ -1961,7 +1960,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C4">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#surfactant"/>
-        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#sticky_sensation"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#stickiness"/>
+        <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#sticky_sensation"/>
         <hasHeuristicDescription xml:lang="en">Sticky sensation may increase if there is too much surfactant</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
     </owl:NamedIndividual>
@@ -1994,6 +1994,7 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C7">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#surfactant"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#recommanded_usage"/>
         <hasHeuristicDescription xml:lang="en">Viscosity is decreasing if surfactants recommended for texture lotion is used (surfactants with lauryl or oleyl groups)</hasHeuristicDescription>
         <rdfs:comment xml:lang="en">Viscosity is decreasing if surfactants recommended for texture lotion is used (surfactants with lauryl or oleyl groups)</rdfs:comment>
     </owl:NamedIndividual>
@@ -2005,6 +2006,7 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#C8">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Heuristic"/>
         <hasHeuristicIngType rdf:resource="https://purl.org/ontocosmetic#surfactant"/>
+        <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#recommanded_usage"/>
         <hasHeuristicDescription xml:lang="en">Viscosity increases if surfactants recommended for creamy lotion are used (surfactants with long chains and without double bonds).</hasHeuristicDescription>
         <rdfs:comment xml:lang="en">Viscosity increases if surfactants recommended for creamy lotion are used (surfactants with long chains and without double bonds).</rdfs:comment>
     </owl:NamedIndividual>
@@ -3922,6 +3924,69 @@ SRM = Synthetic Raw Material</rdfs:comment>
     
 
 
+    <!-- https://purl.org/ontocosmetic#candidate1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#candidate1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_antiox_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_2"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_5"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_humect_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_preserv_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_3"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_7"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_thickener_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#candidate2 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#candidate2">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_antiox_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_2"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_5"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_humect_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_preserv_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_4"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_thickener_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#candidate3 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#candidate3">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_antiox_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emo_3"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_2"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_4"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_humect_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_preserv_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_5"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_thickener_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#candidate4 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#candidate4">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_antiox_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emo_3"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_2"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_4"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_humect_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_preserv_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_6"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_thickener_1"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://purl.org/ontocosmetic#cloud_point -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cloud_point">
@@ -4020,6 +4085,26 @@ SRM = Synthetic Raw Material</rdfs:comment>
     
 
 
+    <!-- https://purl.org/ontocosmetic#dos_emol_4 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_emol_4">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#Coco-Caprylate/Caprate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_emol_5 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_emol_5">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#Caprylic/CapricTriglyceride"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">13.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://purl.org/ontocosmetic#dos_humect_1 -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_humect_1">
@@ -4056,6 +4141,66 @@ SRM = Synthetic Raw Material</rdfs:comment>
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
         <isQuantifying rdf:resource="https://purl.org/ontocosmetic#SorbitanMonostearate"/>
         <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.1</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_3 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_3">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#GlycerylStearateCitrate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_4 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_4">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#GlycerylStearateSE"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_5 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_5">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#GlycerylStearateCitrate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.8</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_6 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_6">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#GlycerylStearateSE"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.8</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_7 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_7">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#SorbitanMonostearate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_8 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_8">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#SorbitanMonostearate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.2</hasQuantity>
     </owl:NamedIndividual>
     
 
@@ -5543,14 +5688,6 @@ It is related to the sensorial term of thickness.</rdfs:comment>
             <rdf:Description rdf:about="https://purl.org/ontocosmetic#Origin"/>
             <rdf:Description rdf:about="https://purl.org/ontocosmetic#SpreadingState"/>
             <rdf:Description rdf:about="https://purl.org/ontocosmetic#TextureState"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://purl.org/ontocosmetic#HeterogenousMixture"/>
-            <rdf:Description rdf:about="https://purl.org/ontocosmetic#HomogenousMixture"/>
-            <rdf:Description rdf:about="https://purl.org/ontocosmetic#OneIngredient"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>

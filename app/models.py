@@ -158,34 +158,39 @@ WHERE { ?heur cosme:hasHeuristicProdProp ?prop; cosme:hasHeuristicProductPropert
 
 def getHeuristic(propertyIRI, valueIRI = None):
     print(propertyIRI)
+    property = propertyIRI.split("#")
+    if valueIRI:
+        state = valueIRI.split("#")
     data = []
     if valueIRI:
         sparql = list(default_world.sparql("""
         PREFIX cosme: <https://purl.org/ontocosmetic#> 
             SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue 
-    WHERE { ?heur cosme:hasHeuristicProdProp """+propertyIRI+""" ;
+    WHERE { ?heur cosme:hasHeuristicProdProp cosme:"""+property[1]+""" ;
+        cosme:hasHeuristicProductPropertyState cosme:"""+state[1]+""";
         cosme:hasHeuristicDescription ?heurDescription.
-        OPTIONAL { ?heur cosme:hasHeuristicProductPropertyState """+valueIRI+"""; cosme:hasHeuristicIngType ?ingType;
-        cosme:hasHeuristicIngProp ?ingProperty;
-        cosme:hasIngredientPropertyState ?ingValue. }
+        OPTIONAL { ?heur cosme:hasHeuristicIngType ?ingType.}
+        OPTIONAL { ?heur cosme:hasHeuristicIngProp ?ingProperty.}
+        OPTIONAL { ?heur cosme:hasIngredientPropertyState ?ingValue. }
         }"""))
     else:
         sparql = list(default_world.sparql("""
         PREFIX cosme: <https://purl.org/ontocosmetic#> 
             SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue 
-    WHERE { ?heur cosme:hasHeuristicProdProp """+propertyIRI+""" ;
+    WHERE { ?heur cosme:hasHeuristicProdProp cosme:"""+property[1]+""" ;
         cosme:hasHeuristicDescription ?heurDescription.
-        OPTIONAL { ?heur cosme:hasHeuristicIngType ?ingType;
-        cosme:hasHeuristicIngProp ?ingProperty;
-        cosme:hasIngredientPropertyState ?ingValue. }
+        OPTIONAL { ?heur cosme:hasHeuristicIngType ?ingType.}
+        OPTIONAL {?heur cosme:hasHeuristicIngProp ?ingProperty.}
+        OPTIONAL {?heur cosme:hasIngredientPropertyState ?ingValue. }
         }"""))
     for resp in sparql:
         tmp_value = {}
         tmp_value['description'] = resp[0]
         tmp_value['ingType'] = resp[1]
         tmp_value['ingProperty'] = resp[2]
-        tmp_value['ingValue'] = resp[0]
+        tmp_value['ingValue'] = resp[3]
         data.append(tmp_value)
+    
     return data
 
 def completeWithWater(formulation):
