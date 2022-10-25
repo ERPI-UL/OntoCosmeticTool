@@ -282,7 +282,7 @@ def calculateRHLB(formulation):
     for dosage in listDosages:
         if type(dosage.isQuantifying) is onto.Emollient:
             Emollient = dosage.isQuantifying
-            thickenerQte += dosage.hasQuantity * Emollient.hasRequiredHLB
+            calculatedRHLB += dosage.hasQuantity * Emollient.hasRequiredHLB
     formulation.hasCalculatedRHLB = calculatedRHLB
 
 def calculateHLBoverRHLB(formulation):
