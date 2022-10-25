@@ -73,19 +73,21 @@ def page_heuristics():
 
 @app.route('/formulation/new_from_res', methods=['GET', 'POST'])
 def page_formul_from_res():
-
+    selected = {}
     if request.form.get("get_heuristic", False):
-        product_prop= request.form.get("product_property", None)
-        product_prop_value= request.form.get("product_property_value", None)
-        heuristics = models.getHeuristic(product_prop, product_prop_value)
+        selected["property"]= request.form.get("product_property", None)
+        selected["value"]= request.form.get("product_property_value", None)
+        heuristics = models.getHeuristic(selected["property"], selected["value"])
         print(heuristics)
         if not heuristics:
             flash('Nothing correspond to the request.', 'warning')
     else:
         heuristics = None
+        selected["property"] = None
+        selected["value"] = None
     product_properties = models.getProductPropOfHeuristic()
     properties_values = models.valueProdProperties(product_properties)
-    return render_template('formulation-from-result.html',responsive=True, responsive_class='table-responsive-sm', properties_data= product_properties, properties_values_data=properties_values, heuristics_data= heuristics)
+    return render_template('formulation-from-result.html',responsive=True, responsive_class='table-responsive-sm', properties_data= product_properties, properties_values_data=properties_values, heuristics_data= heuristics, selected_data= selected)
 
 @app.route('/properties', methods=['GET'])
 def page_properties():

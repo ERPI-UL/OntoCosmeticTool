@@ -14,8 +14,11 @@
             aria-label="Select product property" required>
             <option value="">-- Select a property --</option>
             {% for ppt in properties_data %}
+            {% if selected_data.property == ppt.iri %}
+            <option value="{{ ppt.iri }}" selected>{{ppt.name}}</option>
+            {% else %}
             <option value="{{ ppt.iri }}">{{ppt.name}}</option>
-
+            {% endif %}
             {% endfor %}
 
         </select></div>
@@ -25,8 +28,16 @@
         <div class="col"><label class="form-label" for="product_property_value_select">Which value you expect for this product property
             ?</label></div>
             <div class="col"><select name="product_property_value" id="product_property_value_select" class="form-control"
-            aria-label="Select product property value">
+            aria-label="Select product property value" onload="filter({{properties_values_data}})">
             <option value="">-- Select a property --</option>
+            {% for val in properties_values_data['all'] %}
+            {% if selected_data.value == val.iri %}
+            <option value="{{ val.iri }}" selected>{{val.name}}</option>
+            {% else %}
+            <option value="{{ val.iri }}">{{val.name}}</option>
+            {% endif %}
+            {% endfor %}
+            
 
         </select></div>
     </div><div class="row form-group"><div class="gap-2 col-4"><button type="submit" name="get_heuristic" value="save"

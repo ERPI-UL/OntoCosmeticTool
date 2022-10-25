@@ -145,15 +145,19 @@ def valueProdProperties(prod_prop_list):
            SELECT DISTINCT ?prop ?propState 
 WHERE { ?heur cosme:hasHeuristicProdProp ?prop; cosme:hasHeuristicProductPropertyState ?propState.
     }"""))
+    allValueList = []
     for prod_prop in prod_prop_list:
         temp = []
         for pairs in sparql:
             if pairs[0].iri == prod_prop['iri']:
+                
                 tmp_value = {}
                 tmp_value['iri'] = pairs[1].iri
                 tmp_value['name'] = pairs[1].name
+                allValueList.append(tmp_value)
                 temp.append(tmp_value)
             data[prod_prop['iri']] = temp
+    data['all']= allValueList
     return data
 
 def getHeuristic(propertyIRI, valueIRI = None):
