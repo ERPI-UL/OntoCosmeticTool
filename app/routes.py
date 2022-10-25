@@ -67,12 +67,29 @@ def page_formul_new():
 
 @app.route('/heuristics', methods=['GET'])
 def page_heuristics():
-    titles = [('name','Name'), ('description','Description'), ('ingType','Ingredient type affected'),('ingProperty','Property affected'), ('prodProperty','Impact')]
+    titles = [('name','Name'), ('description','Description'), ('ingType','Ingredient type affected'),('ingProperty','Input ingredient property'),('ingPropertyValue','Ingredient property value'),('prodProperty','Product property'),('prodPropertyValue','Product property value')]
     data = models.heuristics()
     return render_template('heuristics.html',responsive=True, responsive_class='table-responsive-sm', titles= titles, data= data)
 
-@app.route('/formulation/new_from_res', methods=['GET'])
+@app.route('/formulation/new_from_res', methods=['GET', 'POST'])
 def page_formul_from_res():
-    titles = [('name','Name'), ('description','Description'), ('ingType','Ingredient type affected'),('ingProperty','Property affected'), ('prodProperty','Impact')]
-    data = models.heuristics()
-    return render_template('formulation-from-result.html',responsive=True, responsive_class='table-responsive-sm', titles= titles, data= data)
+
+    if request.form.get("get_heuristic", False):
+        product_prop= request.form.get("product_property", None)
+        product_prop_value= request.form.get("product_property_value", None)
+        heuristics = models.getHeuristic(product_prop, product_prop_value)
+        print(heuristics)
+        if not heuristics:
+            flash('Nothing correspond to the request.', 'warning')
+    else:
+        heuristics = None
+    product_properties = models.getProductPropOfHeuristic()
+    properties_values = models.valueProdProperties(product_properties)
+    return render_template('formulation-from-result.html',responsive=True, responsive_class='table-responsive-sm', properties_data= product_properties, properties_values_data=properties_values, heuristics_data= heuristics)
+
+@app.route('/properties', methods=['GET'])
+def page_properties():
+    properties = models.properties()
+    #properties_values = models.valuePerProperties()
+    titles = [('name','Name'), ('description','Description'), ('substanceType', 'Substance Type')]
+    return render_template('properties.html',responsive=True, responsive_class='table-responsive-sm', titles= titles, properties_data= properties)

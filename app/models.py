@@ -3,12 +3,13 @@ import os
 from typing import List
 import uuid
 from owlready2 import *
-onto = get_ontology("./app/static/OntoCosmetic-test4-rulereduced.owl").load()
+onto = get_ontology("./app/static/OntoCosmetic-40-all.owl").load()
 
 def format(value):
     if value:
-        print(type(value))
         if type(value) is owlready2.prop.IndividualValueList or type(value) is List:
+            # print(type(value.first()))
+            # print(value.first())
             return ", ".join(value)
         else:
             return value
@@ -95,10 +96,92 @@ def heuristics():
         tmp_heuristic['description'] = format(Heuristic.hasHeuristicDescription)
         tmp_heuristic['ingType'] = getLabels(Heuristic.hasHeuristicIngType)
         tmp_heuristic['ingProperty'] = getLabels(Heuristic.hasHeuristicIngProp)
-        for product_property in Heuristic.hasHeuristicProdProp:
-            tmp_heuristic['prodProperty'] = getLabels(product_property)
-        #tmp_heuristic['prodProperty'] = Heuristic.hasHeuristicProdProp
+        tmp_heuristic['ingPropertyValue'] = Heuristic.hasIngredientPropertyState
+        #for product_property in Heuristic.hasHeuristicProdProp:
+        #    tmp_heuristic['prodProperty'] = getLabels(product_property)
+        tmp_heuristic['prodProperty'] = Heuristic.hasHeuristicProdProp
+        tmp_heuristic['prodPropertyValue'] = Heuristic.hasHeuristicProductPropertyState
         data.append(tmp_heuristic)
+    return data
+
+def properties():
+    data = []
+    property_inst = onto.Property.instances()
+    for property in property_inst:
+        tmp_property = {}
+        tmp_property['iri'] = property.iri
+        tmp_property['name'] = property.name
+        tmp_property['description'] = property.comment.en.first()
+        tmp_property['substanceType'] = format(property.isPropertyOf.first())
+        #tmp_property['values'] = 
+        data.append(tmp_property)
+    return data
+
+def getProductPropOfHeuristic():
+    data = []
+    sparql = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?prop 
+WHERE { ?heur cosme:hasHeuristicProdProp ?prop.
+    }"""))
+    
+    #heuristics = onto.Heuristic.instances()
+    for property in sparql:
+        tmp_property = {}
+        tmp_property['iri'] = property[0].iri
+        tmp_property['name'] = property[0].name
+        data.append(tmp_property)
+    return data
+    
+
+def valueProdProperties(prod_prop_list):
+    data = {}
+    sparql = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?prop ?propState 
+WHERE { ?heur cosme:hasHeuristicProdProp ?prop; cosme:hasHeuristicProductPropertyState ?propState.
+    }"""))
+    for prod_prop in prod_prop_list:
+        temp = []
+        for pairs in sparql:
+            if pairs[0].iri == prod_prop['iri']:
+                tmp_value = {}
+                tmp_value['iri'] = pairs[1].iri
+                tmp_value['name'] = pairs[1].name
+                temp.append(tmp_value)
+            data[prod_prop['iri']] = temp
+    return data
+
+def getHeuristic(propertyIRI, valueIRI = None):
+    print(propertyIRI)
+    data = []
+    if valueIRI:
+        sparql = list(default_world.sparql("""
+        PREFIX cosme: <https://purl.org/ontocosmetic#> 
+            SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue 
+    WHERE { ?heur cosme:hasHeuristicProdProp """+propertyIRI+""" ;
+        cosme:hasHeuristicDescription ?heurDescription.
+        OPTIONAL { ?heur cosme:hasHeuristicProductPropertyState """+valueIRI+"""; cosme:hasHeuristicIngType ?ingType;
+        cosme:hasHeuristicIngProp ?ingProperty;
+        cosme:hasIngredientPropertyState ?ingValue. }
+        }"""))
+    else:
+        sparql = list(default_world.sparql("""
+        PREFIX cosme: <https://purl.org/ontocosmetic#> 
+            SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue 
+    WHERE { ?heur cosme:hasHeuristicProdProp """+propertyIRI+""" ;
+        cosme:hasHeuristicDescription ?heurDescription.
+        OPTIONAL { ?heur cosme:hasHeuristicIngType ?ingType;
+        cosme:hasHeuristicIngProp ?ingProperty;
+        cosme:hasIngredientPropertyState ?ingValue. }
+        }"""))
+    for resp in sparql:
+        tmp_value = {}
+        tmp_value['description'] = resp[0]
+        tmp_value['ingType'] = resp[1]
+        tmp_value['ingProperty'] = resp[2]
+        tmp_value['ingValue'] = resp[0]
+        data.append(tmp_value)
     return data
 
 def completeWithWater(formulation):

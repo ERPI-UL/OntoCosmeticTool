@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/table.html' import render_table %}
+
+{% block content %}
+    <h1>Properties</h1>
+<p>This page lists all the properties of the substances with the associated quantitative values.</p>
+    {{ render_table(properties_data, titles) }}
+{% endblock %}
