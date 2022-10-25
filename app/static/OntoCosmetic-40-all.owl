@@ -371,6 +371,7 @@
     <!-- https://purl.org/ontocosmetic#isQuantifying -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ontocosmetic#isQuantifying">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
         <rdfs:range rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
         <rdfs:comment xml:lang="en">Give the ingredient of a dosage.</rdfs:comment>
@@ -486,6 +487,7 @@
     <!-- https://purl.org/ontocosmetic#hasPricePerKilogram -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasPricePerKilogram">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <rdfs:comment xml:lang="en">Price per kilogram of an ingredient</rdfs:comment>
@@ -514,6 +516,12 @@
     
 
 
+    <!-- https://purl.org/ontocosmetic#hasQuantitySum -->
+
+    <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasQuantitySum"/>
+    
+
+
     <!-- https://purl.org/ontocosmetic#hasRequiredHLB -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasRequiredHLB">
@@ -528,6 +536,16 @@
     <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasTotalOilyPhase">
         <rdfs:domain rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#hasTotalPrice -->
+
+    <owl:DatatypeProperty rdf:about="https://purl.org/ontocosmetic#hasTotalPrice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">Define the price of the formulation for one kilogram.</rdfs:comment>
+        <rdfs:label xml:lang="en">has total price</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1049,6 +1067,12 @@
     
 
 
+    <!-- https://purl.org/ontocosmetic#HighEmolSpreading -->
+
+    <owl:Class rdf:about="https://purl.org/ontocosmetic#HighEmolSpreading"/>
+    
+
+
     <!-- https://purl.org/ontocosmetic#HomogenousMixture -->
 
     <owl:Class rdf:about="https://purl.org/ontocosmetic#HomogenousMixture">
@@ -1154,6 +1178,18 @@
         <rdfs:subClassOf rdf:resource="https://purl.org/ontocosmetic#AqueousThickeners"/>
         <rdfs:label xml:lang="en">Ionic thickener</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#LowEmolSpreading -->
+
+    <owl:Class rdf:about="https://purl.org/ontocosmetic#LowEmolSpreading"/>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#MedEmolSpreading -->
+
+    <owl:Class rdf:about="https://purl.org/ontocosmetic#MedEmolSpreading"/>
     
 
 
@@ -1658,6 +1694,9 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
     <!-- https://purl.org/ontocosmetic#A1 -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#A1">
@@ -2137,6 +2176,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Cosgard">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Preservative"/>
+        <hasINCIcode xml:lang="en">Cosgard</hasINCIcode>
+        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">9.5</hasPricePerKilogram>
     </owl:NamedIndividual>
     
 
@@ -2352,7 +2393,7 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Humectant"/>
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
         <hasINCIcode>Glycerin</hasINCIcode>
-        
+        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10.0</hasPricePerKilogram>
     </owl:NamedIndividual>
     
 
@@ -2439,6 +2480,17 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8.92</hasPricePerKilogram>
         <rdfs:label>Glyceryl Stearate SE</rdfs:label>
     </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#HLB -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#HLB">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
+        <rdfs:label xml:lang="en">HLB</rdfs:label>
+    </owl:NamedIndividual>
+    
 
 
     <!-- https://purl.org/ontocosmetic#HexylLaurate -->
@@ -2717,6 +2769,25 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     
 
 
+    <!-- https://purl.org/ontocosmetic#NRM_and_SRM -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#NRM_and_SRM">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
+        <rdfs:comment xml:lang="en">NRM = Natural Raw Material
+SRM = Synthetic Raw Material</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#NonStable -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#NonStable">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StabilityState"/>
+        <rdfs:label xml:lang="en">Non stable</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://purl.org/ontocosmetic#Octyldodecanol -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Octyldodecanol">
@@ -2729,6 +2800,14 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">23.0</hasPricePerKilogram>
         <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">11.0</hasRequiredHLB>
         <rdfs:label>Octyldodecanol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#OilyPhaseConcentration -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#OilyPhaseConcentration">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
     </owl:NamedIndividual>
     
 
@@ -2821,6 +2900,7 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <hasPhase rdf:resource="https://purl.org/ontocosmetic#oily_phase"/>
         <hasSpreading rdf:resource="https://purl.org/ontocosmetic#low_spreading"/>
         <hasINCIcode>Olea Europaea (Olive) Fruit Oil</hasINCIcode>
+        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">35.0</hasPricePerKilogram>
         <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">7.0</hasRequiredHLB>
         <rdfs:label>Olea Europaea (Olive) Fruit Oil</rdfs:label>
     </owl:NamedIndividual>
@@ -3535,6 +3615,15 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     
 
 
+    <!-- https://purl.org/ontocosmetic#Stable -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Stable">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StabilityState"/>
+        <rdfs:label xml:lang="en">Stable</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://purl.org/ontocosmetic#Steareth-10 -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Steareth-10">
@@ -3723,9 +3812,406 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
         <hasINCIcode>Vitamine E</hasINCIcode>
     </owl:NamedIndividual>
-
-
     
+
+
+    <!-- https://purl.org/ontocosmetic#WaterPhaseConcentration -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#WaterPhaseConcentration">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#absorption_rate -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#absorption_rate">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:comment xml:lang="en">Describe the capacity of the formulation product to be absopt by a skin.</rdfs:comment>
+        <rdfs:label xml:lang="en">Absorption rate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#active -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#active">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Active</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#after_feeling -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#after_feeling">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <rdfs:label xml:lang="en">After feeling</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#agitation -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#agitation">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#UnitOperation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#anionic -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#anionic">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#IonicState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#cloud_point -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cloud_point">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
+        <rdfs:comment xml:lang="en">It corresponds to the temperature at which the surfactant begins to precipitate when the temperature is increased. Emulsions are destabilized above this temperature (maximal temperature for stability).</rdfs:comment>
+        <rdfs:label xml:lang="en">Cloud point</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#complete_sensoriel_profile -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#complete_sensoriel_profile">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Sensation"/>
+        <rdfs:label xml:lang="en">Complete sensoriel profile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#cooling -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cooling">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#UnitOperation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#cream -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cream">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
+        <rdfs:label xml:lang="en">Cream</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#critical_micelle_concentration -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#critical_micelle_concentration">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
+        <rdfs:comment xml:lang="en">It is the concentration at which the surfactant molecules begin to form micelles in an aqueous solution, i.e., an aggregate structure of surfactant molecules. Below CMC, surface tension is reduced when the surfactant concentration increases; above CMC, the surface tension remains constant.</rdfs:comment>
+        <rdfs:label xml:lang="en">Critical micelle concentration</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#density -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#density">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:comment xml:lang="en">It is the mass per unit of volume. In emulsions it is related to emulsion stability.</rdfs:comment>
+        <rdfs:label xml:lang="en">Density</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_antiox_1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_antiox_1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#tocopherol"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_emo_3 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_emo_3">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#Caprylic/CapricTriglyceride"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">9.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_emol_1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_emol_1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#EthylhexylPalmitate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_emol_2 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_emol_2">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#OliveOil"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_humect_1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_humect_1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#Glycerin"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_preserv_1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_preserv_1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#Cosgard"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.7</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#PEG-20SorbitanMonostearate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.9</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_surf_2 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_surf_2">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#SorbitanMonostearate"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.1</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#dos_thickener_1 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#dos_thickener_1">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Dosage"/>
+        <isQuantifying rdf:resource="https://purl.org/ontocosmetic#xanthan_gum"/>
+        <hasQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.1</hasQuantity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#droplet_size -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#droplet_size">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
+        <rdfs:comment xml:lang="en">Fromulated product can be emulsions. These emulsions are caracterized by the size of the droplets.</rdfs:comment>
+        <rdfs:label xml:lang="en">Droplet size</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#efficiency -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#efficiency">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#thickener"/>
+        <rdfs:comment xml:lang="en">It is the ability to increase viscosity using a certain quantity of the rheological modifier. Efficiency depends on the polymer nature, molecular weight, branches, and conformation.</rdfs:comment>
+        <rdfs:label xml:lang="en">Efficiency</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#electrical_nature -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#electrical_nature">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
+        <rdfs:label xml:lang="en">Electrical nature</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#emollient_type -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#emollient_type">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Emollient type</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#ester -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#ester">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:label xml:lang="en">Ester</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#ether -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#ether">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:label xml:lang="en">Ether</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#fatty_acid -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#fatty_acid">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:comment xml:lang="en">Category of emollient that are carboxylic acid with an aliphatic chain.</rdfs:comment>
+        <rdfs:label xml:lang="en">Fatty acid</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#fatty_alcohol -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#fatty_alcohol">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:comment xml:lang="en">Category of emollients that are usually high-molecular-weight derived from natural fats and oils.</rdfs:comment>
+        <rdfs:label xml:lang="en">fatty alcohol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#formulation_type -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#formulation_type">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Formulation type</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#gas -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#gas">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Fluid"/>
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StateOfMatter"/>
+        <rdfs:comment xml:lang="en">State of matter. It is a substance in a state that takes the shape and volume of its container.</rdfs:comment>
+        <rdfs:label xml:lang="en">Gas</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#gel -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#gel">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
+        <rdfs:label xml:lang="en">Gel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#heating -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#heating">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#UnitOperation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#high_absorption_rate -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_absorption_rate">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AbsorptionRateState"/>
+        <rdfs:label xml:lang="en">High absorption rate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#high_agitation -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_agitation">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AgitationState"/>
+        <rdfs:label xml:lang="en">High agitation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#high_droplet -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_droplet">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#DropletSizeState"/>
+        <rdfs:label xml:lang="en">High droplet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#high_spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
+        <rdfs:label xml:lang="en">High spreading</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#high_viscosity -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_viscosity">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ViscosityState"/>
+        <rdfs:label xml:lang="en">High viscosity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#homogenous -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#homogenous">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#MicrostructureState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#hydrocarbon -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#hydrocarbon">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:comment xml:lang="en">Catergory of emmolients that have organic compound consisting entirely of hydrogen and carbon.</rdfs:comment>
+        <rdfs:label xml:lang="en">Hydrocarbon</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#incomplete_sensoriel_profile -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#incomplete_sensoriel_profile">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Sensation"/>
+        <rdfs:label xml:lang="en">Incomplete sensorial profile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#ingredient_type -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#ingredient_type">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Ingredient type</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://purl.org/ontocosmetic#jojobaOil -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#jojobaOil">
@@ -3737,6 +4223,679 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</hasRequiredHLB>
         <rdfs:label>jojoba oil</rdfs:label>
     </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#kraft_point -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#kraft_point">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
+        <rdfs:comment xml:lang="en">It is the minimal temperature at which surfactants begin to form micelles. Below this temperature, the solubility of surfactant is low. Stable emulsions are only formed above this temperature (minimal temperature for stability).</rdfs:comment>
+        <rdfs:label xml:lang="en">Kraft point</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#light_emollience -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#light_emollience">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
+        <rdfs:label xml:lang="en">Light emollience</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#liquid -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#liquid">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Fluid"/>
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StateOfMatter"/>
+        <rdfs:comment xml:lang="en">State of matter. It is a substance in a state that takes the shape of its container but retains a (nearly) constant volume independent of pressure</rdfs:comment>
+        <rdfs:label xml:lang="en">Liquid</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#lotion -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#lotion">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
+        <rdfs:label xml:lang="en">Lotion</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#low_absorption_rate -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_absorption_rate">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AbsorptionRateState"/>
+        <rdfs:label xml:lang="en">Low absorption rate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#low_agitation -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_agitation">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AgitationState"/>
+        <rdfs:label xml:lang="en">Low agitation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#low_spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
+        <rdfs:label xml:lang="en">Low spreading</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#low_viscosity -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_viscosity">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ViscosityState"/>
+        <rdfs:label xml:lang="en">Low viscosity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#med_absorption_rate -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_absorption_rate">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AbsorptionRateState"/>
+        <rdfs:label xml:lang="en">Medium absorption rate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#med_agitation -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_agitation">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AgitationState"/>
+        <rdfs:label xml:lang="en">Medium agitation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#med_droplet -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_droplet">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#DropletSizeState"/>
+        <rdfs:label xml:lang="en">Medium droplet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#med_viscosity -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_viscosity">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ViscosityState"/>
+        <rdfs:label xml:lang="en">Medium viscosity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#medium_emollience -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_emollience">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
+        <rdfs:label xml:lang="en">Medium emollience</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#medium_spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
+        <rdfs:label xml:lang="en">Medium spreading</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#medium_to_high_spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_high_spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
+        <rdfs:label xml:lang="en">Medium to high spreading</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#medium_to_light_emollience -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_light_emollience">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
+        <rdfs:label xml:lang="en">Medium to light emollience</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#medium_to_low_spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_low_spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
+        <rdfs:label xml:lang="en">Medium to low psreading</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#medium_to_rich_emollience -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_rich_emollience">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
+        <rdfs:label xml:lang="en">Medium to rich emollience</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#melting_point -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#melting_point">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:comment xml:lang="en">It is the temperature in which a substance in the solid-state melts and change to a liquid state. It is important for the selection of ingredients and process conditions. For example, in the case of emollients, it determines if the emollient is solid or liquid, its consistency, and the possible consistency of the resulting formulation.</rdfs:comment>
+        <rdfs:label xml:lang="en">Melting point</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#microstructure -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#microstructure">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
+        <rdfs:label xml:lang="en">Microstructure</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#natural -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#natural_and_SRM -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural_and_SRM">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#natural_raw_material -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural_raw_material">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#natural_raw_material_enzymatic_processed -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural_raw_material_enzymatic_processed">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#no_sticky_sensation -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#no_sticky_sensation">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StickinessState"/>
+        <rdfs:label xml:lang="en">No sticky sensation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#non-organic -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#non-organic">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#non_oily -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#non_oily">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
+        <rdfs:label xml:lang="en">Non oily</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#nonionic -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#nonionic">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#IonicState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#oil-in-water -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oil-in-water">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#MicrostructureState"/>
+        <rdfs:label xml:lang="en">Oil in water</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#oiliness -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oiliness">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
+        <rdfs:label xml:lang="en">Oiliness</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#oily -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oily">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
+        <rdfs:label xml:lang="en">Oily</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#oily_phase -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oily_phase">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#PhaseState"/>
+        <rdfs:label xml:lang="en">Oily phase</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#original -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#original">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Formulation"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_antiox_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emo_3"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_emol_2"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_humect_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_preserv_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_1"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_surf_2"/>
+        <hasDosage rdf:resource="https://purl.org/ontocosmetic#dos_thickener_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#phase -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#phase">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <rdfs:comment xml:lang="en">It is a region of space throughout which all physical properties of a material are essentially uniform.</rdfs:comment>
+        <rdfs:label xml:lang="en">Phase</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#polarity -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#polarity">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:comment xml:lang="en">It is a property that represent the separation of the electrical charge within the same molecule. The polarity determines the types of inter-molecular forces of the substance. Thus, it is related to other properties such as solubility, boiling point, fusion point, among others.</rdfs:comment>
+        <rdfs:label xml:lang="en">Polarity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#product_type -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#product_type">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Product type</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#pseudoplastic -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#pseudoplastic">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#RheologicState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#recommanded_usage -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#recommanded_usage">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <rdfs:label xml:lang="en">Recommanded usage</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#required_hlb -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#required_hlb">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:comment xml:lang="en">It represents the HLB needed by an oil or a mixture of oils to be more likely to be incorporated in a stable O/W emulsion by an emulsifier or blend of emulsifiers. It determines the compatibility of oils with the surfactant system.
+The value of the required HLB of an emollient blend corresponds to the average of the HLB required by each emollient weighted by its mass composition in the emollient mixture.</rdfs:comment>
+        <rdfs:label xml:lang="en">Required HLB</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#rheology -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#rheology">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <rdfs:label xml:lang="en">Rheology</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#rich_emollience -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#rich_emollience">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
+        <rdfs:label xml:lang="en">Rich emollience</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#sensorial_profile -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#sensorial_profile">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:label xml:lang="en">Sensorial profile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#silicone -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#silicone">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:comment xml:lang="en">Category of emollient that are polysiloxane which is a polymer made up of siloxane (−R2Si−O−SiR2−)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#silky -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#silky">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AfterfeelingState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#small_droplet -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#small_droplet">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#DropletSizeState"/>
+        <rdfs:label xml:lang="en">Small droplet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#smooth -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#smooth">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AfterfeelingState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#solid -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#solid">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StateOfMatter"/>
+        <rdfs:comment xml:lang="en">State of matter. It has an structural rigidity and a resistance to a force applied to the surface.</rdfs:comment>
+        <rdfs:label xml:lang="en">Solid</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#solubility_in_water -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#solubility_in_water">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#thickener"/>
+        <rdfs:label xml:lang="en">Solubility in water</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#source -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#source">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#product_type"/>
+        <rdfs:label xml:lang="en">Source</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#special_function -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#special_function">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
+        <rdfs:label xml:lang="en">Special function</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#spray -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#spray">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <rdfs:label xml:lang="en">Spreading</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#stability -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#stability">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
+        <rdfs:comment xml:lang="en">A formulation can be either stable or note stable.</rdfs:comment>
+        <rdfs:label xml:lang="en">Stability</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#stickiness -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#stickiness">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
+        <rdfs:label xml:lang="en">Stickiness</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#sticky_sensation -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#sticky_sensation">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StickinessState"/>
+        <rdfs:label xml:lang="en">Sticky sensation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#surfactant -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#surfactant"/>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#surfactant_type -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#surfactant_type">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Surfactant type</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#synthetic -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#synthetic">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#texture -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#texture">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
+        <rdfs:label xml:lang="en">Texture</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#thickener -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#thickener">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
+        <rdfs:label xml:lang="en">Thickener type</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#thickener_stability -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#thickener_stability">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#thickener"/>
+        <rdfs:comment xml:lang="en">Stability with other ingredients because some rheological modifiers may cause the precipitation of other ingredients in the formula.</rdfs:comment>
+        <rdfs:label xml:lang="en">Thickener stability</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#thixotropic -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#thixotropic">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#RheologicState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#tocopherol -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#tocopherol">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Antioxidant"/>
+        <hasOrigin rdf:resource="https://purl.org/ontocosmetic#natural_raw_material"/>
+        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">100.0</hasPricePerKilogram>
+        <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</hasRequiredHLB>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#transport_and_release -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#transport_and_release">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
+        <rdfs:label xml:lang="en">Transport and realease</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#triglyceride -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#triglyceride">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+        <rdfs:comment xml:lang="en">Category of emollients that are ester derived from glycerol and three fatty acids</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#vegetable_oil -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#vegetable_oil">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#vegetable_wax -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#vegetable_wax">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#very_high_spreading -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#very_high_spreading">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#very_oily -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#very_oily">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
+        <rdfs:comment xml:lang="en">Very high oily sensation provided by a formulation. It is a value of the oiliness property.</rdfs:comment>
+        <rdfs:label xml:lang="en">Very oily</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#very_waterly -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#very_waterly">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
+        <rdfs:label xml:lang="en">Very waterly</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#viscosity -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#viscosity">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <rdfs:comment xml:lang="en">It is the is a measure of the resistance of a fluid to deformation. It determines the spreadability of the oil and its formulations. Units (mPa*s) 
+Describe the level of viscosity of a formulated product. it can be low, medium or high.
+It is related to the sensorial term of thickness.</rdfs:comment>
+        <rdfs:label xml:lang="en">Viscosity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#visual_appearance -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#visual_appearance">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
+        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
+        <rdfs:comment xml:lang="en">Property that describes the color and transparency.</rdfs:comment>
+        <rdfs:label xml:lang="en">Visual appearance</rdfs:label>
+    </owl:NamedIndividual>
+    
 
 
     <!-- https://purl.org/ontocosmetic#water -->
@@ -3744,6 +4903,55 @@ It is related to the sensorial term of thickness.</rdfs:comment>
     <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#water">
         <rdf:type rdf:resource="https://purl.org/ontocosmetic#Ingredient"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#water-in-oil -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#water-in-oil">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#MicrostructureState"/>
+        <rdfs:label xml:lang="en">Water in oil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#water_phase -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#water_phase">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#PhaseState"/>
+        <rdfs:label xml:lang="en">Water phase</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#waterly -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#waterly">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
+        <rdfs:comment xml:lang="en">Water sensation provided by a formulation. It is a value of the oiliness property.</rdfs:comment>
+        <rdfs:label xml:lang="en">Waterly</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#waxy -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#waxy">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AfterfeelingState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ontocosmetic#xanthan_gum -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#xanthan_gum">
+        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Thickener"/>
+        <hasOrigin rdf:resource="https://purl.org/ontocosmetic#natural"/>
+        <hasPhase rdf:resource="https://purl.org/ontocosmetic#water_phase"/>
+        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">35.0</hasPricePerKilogram>
+    </owl:NamedIndividual>
+    
+
 
     <!-- https://purl.org/ontocosmetic#Bis-(Glyceryl/Lauryl)GlycerylLaurylDimethicone;Caprylic/CapricTriglyceride -->
 
@@ -4237,1117 +5445,6 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">13.0</hasRequiredHLB>
         <rdfs:label>Tris(PPG-3 Benzyl ether) Citrate</rdfs:label>
     </owl:NamedIndividual>
-
-
-    <!-- https://purl.org/ontocosmetic#HLB -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#HLB">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
-        <rdfs:label xml:lang="en">HLB</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#HexylLaurate -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#HexylLaurate">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#ester"/>
-        <hasSpreading rdf:resource="https://purl.org/ontocosmetic#high_spreading"/>
-        <hasINCIcode>Hexyl Laurate</hasINCIcode>
-        <rdfs:label>Hexyl Laurate</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#Hexyldecanol -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Hexyldecanol">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#fatty_alcohol"/>
-        <hasOrigin rdf:resource="https://purl.org/ontocosmetic#natural_raw_material"/>
-        <hasSpreading rdf:resource="https://purl.org/ontocosmetic#medium_spreading"/>
-        <hasINCIcode>Hexyldecanol</hasINCIcode>
-        <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">14.0</hasRequiredHLB>
-        <rdfs:label>Hexyldecanol</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#HexyldecylStearate -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#HexyldecylStearate">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#ester"/>
-        <hasSpreading rdf:resource="https://purl.org/ontocosmetic#low_spreading"/>
-        <hasINCIcode>Hexyldecyl Stearate</hasINCIcode>
-        <rdfs:label>Hexyldecyl Stearate</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#NRM_and_SRM -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#NRM_and_SRM">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
-        <rdfs:comment xml:lang="en">NRM = Natural Raw Material
-SRM = Synthetic Raw Material</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#NonStable -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#NonStable">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StabilityState"/>
-        <rdfs:label xml:lang="en">Non stable</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#OilyPhaseConcentration -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#OilyPhaseConcentration">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#Petrolatum -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Petrolatum">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#hydrocarbon"/>
-        <hasINCIcode>Petrolatum</hasINCIcode>
-        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">14.111111</hasPricePerKilogram>
-        <rdfs:label>Petrolatum</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#Squalane -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Squalane">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#hydrocarbon"/>
-        <hasSpreading rdf:resource="https://purl.org/ontocosmetic#medium_spreading"/>
-        <hasINCIcode>Squalane</hasINCIcode>
-        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">58.705883</hasPricePerKilogram>
-        <rdfs:label>Squalane</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#Stable -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#Stable">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StabilityState"/>
-        <rdfs:label xml:lang="en">Stable</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#WaterPhaseConcentration -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#WaterPhaseConcentration">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#absorption_rate -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#absorption_rate">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:comment xml:lang="en">Describe the capacity of the formulation product to be absopt by a skin.</rdfs:comment>
-        <rdfs:label xml:lang="en">Absorption rate</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#active -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#active">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Active</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#after_feeling -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#after_feeling">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <rdfs:label xml:lang="en">After feeling</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#agitation -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#agitation">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#UnitOperation"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#anionic -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#anionic">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#IonicState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#cloud_point -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cloud_point">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
-        <rdfs:comment xml:lang="en">It corresponds to the temperature at which the surfactant begins to precipitate when the temperature is increased. Emulsions are destabilized above this temperature (maximal temperature for stability).</rdfs:comment>
-        <rdfs:label xml:lang="en">Cloud point</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#complete_sensoriel_profile -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#complete_sensoriel_profile">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Sensation"/>
-        <rdfs:label xml:lang="en">Complete sensoriel profile</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#cooling -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cooling">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#UnitOperation"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#cream -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#cream">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
-        <rdfs:label xml:lang="en">Cream</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#critical_micelle_concentration -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#critical_micelle_concentration">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
-        <rdfs:comment xml:lang="en">It is the concentration at which the surfactant molecules begin to form micelles in an aqueous solution, i.e., an aggregate structure of surfactant molecules. Below CMC, surface tension is reduced when the surfactant concentration increases; above CMC, the surface tension remains constant.</rdfs:comment>
-        <rdfs:label xml:lang="en">Critical micelle concentration</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#density -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#density">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:comment xml:lang="en">It is the mass per unit of volume. In emulsions it is related to emulsion stability.</rdfs:comment>
-        <rdfs:label xml:lang="en">Density</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#droplet_size -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#droplet_size">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
-        <rdfs:comment xml:lang="en">Fromulated product can be emulsions. These emulsions are caracterized by the size of the droplets.</rdfs:comment>
-        <rdfs:label xml:lang="en">Droplet size</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#efficiency -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#efficiency">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#thickener"/>
-        <rdfs:comment xml:lang="en">It is the ability to increase viscosity using a certain quantity of the rheological modifier. Efficiency depends on the polymer nature, molecular weight, branches, and conformation.</rdfs:comment>
-        <rdfs:label xml:lang="en">Efficiency</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#electrical_nature -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#electrical_nature">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
-        <rdfs:label xml:lang="en">Electrical nature</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#emollient_type -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#emollient_type">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Emollient type</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#ester -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#ester">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:label xml:lang="en">Ester</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#ether -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#ether">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:label xml:lang="en">Ether</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#fatty_acid -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#fatty_acid">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:comment xml:lang="en">Category of emollient that are carboxylic acid with an aliphatic chain.</rdfs:comment>
-        <rdfs:label xml:lang="en">Fatty acid</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#fatty_alcohol -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#fatty_alcohol">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:comment xml:lang="en">Category of emollients that are usually high-molecular-weight derived from natural fats and oils.</rdfs:comment>
-        <rdfs:label xml:lang="en">fatty alcohol</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#formulation_type -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#formulation_type">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Formulation type</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#gas -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#gas">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Fluid"/>
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StateOfMatter"/>
-        <rdfs:comment xml:lang="en">State of matter. It is a substance in a state that takes the shape and volume of its container.</rdfs:comment>
-        <rdfs:label xml:lang="en">Gas</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#gel -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#gel">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
-        <rdfs:label xml:lang="en">Gel</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#heating -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#heating">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#UnitOperation"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#high_absorption_rate -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_absorption_rate">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AbsorptionRateState"/>
-        <rdfs:label xml:lang="en">High absorption rate</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#high_agitation -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_agitation">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AgitationState"/>
-        <rdfs:label xml:lang="en">High agitation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#high_droplet -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_droplet">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#DropletSizeState"/>
-        <rdfs:label xml:lang="en">High droplet</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#high_spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
-        <rdfs:label xml:lang="en">High spreading</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#high_viscosity -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#high_viscosity">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ViscosityState"/>
-        <rdfs:label xml:lang="en">High viscosity</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#homogenous -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#homogenous">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#MicrostructureState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#hydrocarbon -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#hydrocarbon">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:comment xml:lang="en">Catergory of emmolients that have organic compound consisting entirely of hydrogen and carbon.</rdfs:comment>
-        <rdfs:label xml:lang="en">Hydrocarbon</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#incomplete_sensoriel_profile -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#incomplete_sensoriel_profile">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Sensation"/>
-        <rdfs:label xml:lang="en">Incomplete sensorial profile</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#ingredient_type -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#ingredient_type">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Ingredient type</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#kraft_point -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#kraft_point">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#surfactant_type"/>
-        <rdfs:comment xml:lang="en">It is the minimal temperature at which surfactants begin to form micelles. Below this temperature, the solubility of surfactant is low. Stable emulsions are only formed above this temperature (minimal temperature for stability).</rdfs:comment>
-        <rdfs:label xml:lang="en">Kraft point</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#light_emollience -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#light_emollience">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
-        <rdfs:label xml:lang="en">Light emollience</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#liquid -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#liquid">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Fluid"/>
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StateOfMatter"/>
-        <rdfs:comment xml:lang="en">State of matter. It is a substance in a state that takes the shape of its container but retains a (nearly) constant volume independent of pressure</rdfs:comment>
-        <rdfs:label xml:lang="en">Liquid</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#lotion -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#lotion">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
-        <rdfs:label xml:lang="en">Lotion</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#low_absorption_rate -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_absorption_rate">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AbsorptionRateState"/>
-        <rdfs:label xml:lang="en">Low absorption rate</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#low_agitation -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_agitation">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AgitationState"/>
-        <rdfs:label xml:lang="en">Low agitation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#low_spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
-        <rdfs:label xml:lang="en">Low spreading</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#low_viscosity -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#low_viscosity">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ViscosityState"/>
-        <rdfs:label xml:lang="en">Low viscosity</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#med_absorption_rate -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_absorption_rate">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AbsorptionRateState"/>
-        <rdfs:label xml:lang="en">Medium absorption rate</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#med_agitation -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_agitation">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AgitationState"/>
-        <rdfs:label xml:lang="en">Medium agitation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#med_droplet -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_droplet">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#DropletSizeState"/>
-        <rdfs:label xml:lang="en">Medium droplet</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#med_viscosity -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#med_viscosity">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ViscosityState"/>
-        <rdfs:label xml:lang="en">Medium viscosity</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#medium_emollience -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_emollience">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
-        <rdfs:label xml:lang="en">Medium emollience</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#medium_spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
-        <rdfs:label xml:lang="en">Medium spreading</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#medium_to_high_spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_high_spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
-        <rdfs:label xml:lang="en">Medium to high spreading</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#medium_to_light_emollience -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_light_emollience">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
-        <rdfs:label xml:lang="en">Medium to light emollience</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#medium_to_low_spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_low_spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
-        <rdfs:label xml:lang="en">Medium to low psreading</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#medium_to_rich_emollience -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#medium_to_rich_emollience">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
-        <rdfs:label xml:lang="en">Medium to rich emollience</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#melting_point -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#melting_point">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:comment xml:lang="en">It is the temperature in which a substance in the solid-state melts and change to a liquid state. It is important for the selection of ingredients and process conditions. For example, in the case of emollients, it determines if the emollient is solid or liquid, its consistency, and the possible consistency of the resulting formulation.</rdfs:comment>
-        <rdfs:label xml:lang="en">Melting point</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#microstructure -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#microstructure">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StructurePropertyState"/>
-        <rdfs:label xml:lang="en">Microstructure</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#natural -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#natural_and_SRM -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural_and_SRM">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#natural_raw_material -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural_raw_material">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#natural_raw_material_enzymatic_processed -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#natural_raw_material_enzymatic_processed">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#no_sticky_sensation -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#no_sticky_sensation">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StickinessState"/>
-        <rdfs:label xml:lang="en">No sticky sensation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#non-organic -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#non-organic">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#non_oily -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#non_oily">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
-        <rdfs:label xml:lang="en">Non oily</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#nonionic -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#nonionic">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#IonicState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#oil-in-water -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oil-in-water">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#MicrostructureState"/>
-        <rdfs:label xml:lang="en">Oil in water</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#oiliness -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oiliness">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
-        <rdfs:label xml:lang="en">Oiliness</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#oily -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oily">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
-        <rdfs:label xml:lang="en">Oily</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#oily_phase -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#oily_phase">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#PhaseState"/>
-        <rdfs:label xml:lang="en">Oily phase</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#phase -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#phase">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <rdfs:comment xml:lang="en">It is a region of space throughout which all physical properties of a material are essentially uniform.</rdfs:comment>
-        <rdfs:label xml:lang="en">Phase</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#polarity -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#polarity">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:comment xml:lang="en">It is a property that represent the separation of the electrical charge within the same molecule. The polarity determines the types of inter-molecular forces of the substance. Thus, it is related to other properties such as solubility, boiling point, fusion point, among others.</rdfs:comment>
-        <rdfs:label xml:lang="en">Polarity</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#product_type -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#product_type">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Product type</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#pseudoplastic -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#pseudoplastic">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#RheologicState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#recommanded_usage -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#recommanded_usage">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <rdfs:label xml:lang="en">Recommanded usage</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#required_hlb -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#required_hlb">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:comment xml:lang="en">It represents the HLB needed by an oil or a mixture of oils to be more likely to be incorporated in a stable O/W emulsion by an emulsifier or blend of emulsifiers. It determines the compatibility of oils with the surfactant system.
-The value of the required HLB of an emollient blend corresponds to the average of the HLB required by each emollient weighted by its mass composition in the emollient mixture.</rdfs:comment>
-        <rdfs:label xml:lang="en">Required HLB</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#rheology -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#rheology">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <rdfs:label xml:lang="en">Rheology</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#rich_emollience -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#rich_emollience">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#EmollienceState"/>
-        <rdfs:label xml:lang="en">Rich emollience</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#sensorial_profile -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#sensorial_profile">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:label xml:lang="en">Sensorial profile</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#silicone -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#silicone">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:comment xml:lang="en">Category of emollient that are polysiloxane which is a polymer made up of siloxane (−R2Si−O−SiR2−)</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#silky -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#silky">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AfterfeelingState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#small_droplet -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#small_droplet">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#DropletSizeState"/>
-        <rdfs:label xml:lang="en">Small droplet</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#smooth -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#smooth">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AfterfeelingState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#solid -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#solid">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StateOfMatter"/>
-        <rdfs:comment xml:lang="en">State of matter. It has an structural rigidity and a resistance to a force applied to the surface.</rdfs:comment>
-        <rdfs:label xml:lang="en">Solid</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#solubility_in_water -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#solubility_in_water">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#thickener"/>
-        <rdfs:label xml:lang="en">Solubility in water</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#source -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#source">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#product_type"/>
-        <rdfs:label xml:lang="en">Source</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#special_function -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#special_function">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
-        <rdfs:label xml:lang="en">Special function</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#spray -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#spray">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#TextureState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <rdfs:label xml:lang="en">Spreading</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#stability -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#stability">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
-        <rdfs:comment xml:lang="en">A formulation can be either stable or note stable.</rdfs:comment>
-        <rdfs:label xml:lang="en">Stability</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#stickiness -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#stickiness">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
-        <rdfs:label xml:lang="en">Stickiness</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#sticky_sensation -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#sticky_sensation">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#StickinessState"/>
-        <rdfs:label xml:lang="en">Sticky sensation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#surfactant_type -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#surfactant_type">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Surfactant type</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#synthetic -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#synthetic">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Origin"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#texture -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#texture">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#ingredient_type"/>
-        <rdfs:label xml:lang="en">Texture</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#thickener -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#thickener">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#ChemicalFamily"/>
-        <rdfs:label xml:lang="en">Thickener type</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#thickener_stability -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#thickener_stability">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#thickener"/>
-        <rdfs:comment xml:lang="en">Stability with other ingredients because some rheological modifiers may cause the precipitation of other ingredients in the formula.</rdfs:comment>
-        <rdfs:label xml:lang="en">Thickener stability</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#thixotropic -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#thixotropic">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#RheologicState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#transport_and_release -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#transport_and_release">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
-        <rdfs:label xml:lang="en">Transport and realease</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#triglyceride -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#triglyceride">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-        <rdfs:comment xml:lang="en">Category of emollients that are ester derived from glycerol and three fatty acids</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#vegetable_oil -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#vegetable_oil">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#vegetable_wax -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#vegetable_wax">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Chemical_nature"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#very_high_spreading -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#very_high_spreading">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#SpreadingState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#very_oily -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#very_oily">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
-        <rdfs:comment xml:lang="en">Very high oily sensation provided by a formulation. It is a value of the oiliness property.</rdfs:comment>
-        <rdfs:label xml:lang="en">Very oily</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#very_waterly -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#very_waterly">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
-        <rdfs:label xml:lang="en">Very waterly</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#viscosity -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#viscosity">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <rdfs:comment xml:lang="en">It is the is a measure of the resistance of a fluid to deformation. It determines the spreadability of the oil and its formulations. Units (mPa*s) 
-Describe the level of viscosity of a formulated product. it can be low, medium or high.
-It is related to the sensorial term of thickness.</rdfs:comment>
-        <rdfs:label xml:lang="en">Viscosity</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#visual_appearance -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#visual_appearance">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Property"/>
-        <isPropertyOf rdf:resource="https://purl.org/ontocosmetic#formulation_type"/>
-        <rdfs:comment xml:lang="en">Property that describes the color and transparency.</rdfs:comment>
-        <rdfs:label xml:lang="en">Visual appearance</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#water-in-oil -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#water-in-oil">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#MicrostructureState"/>
-        <rdfs:label xml:lang="en">Water in oil</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#water_phase -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#water_phase">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#PhaseState"/>
-        <rdfs:label xml:lang="en">Water phase</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#waterly -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#waterly">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#Oiliness"/>
-        <rdfs:comment xml:lang="en">Water sensation provided by a formulation. It is a value of the oiliness property.</rdfs:comment>
-        <rdfs:label xml:lang="en">Waterly</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#waxy -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#waxy">
-        <rdf:type rdf:resource="https://purl.org/ontocosmetic#AfterfeelingState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#HelianthusAnnuus(sunflowerseed)Oil -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#HelianthusAnnuus(sunflowerseed)Oil">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#vegetable_oil"/>
-        <hasOrigin rdf:resource="https://purl.org/ontocosmetic#natural_raw_material"/>
-        <hasSpreading rdf:resource="https://purl.org/ontocosmetic#low_spreading"/>
-        <hasINCIcode>Helianthus Annuus (sunflower seed) oil</hasINCIcode>
-        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">12.166667</hasPricePerKilogram>
-        <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</hasRequiredHLB>
-        <rdfs:label>Helianthus Annuus (sunflower seed) oil</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://purl.org/ontocosmetic#TheobromaCacao(Cocoabutter) -->
-
-    <owl:NamedIndividual rdf:about="https://purl.org/ontocosmetic#TheobromaCacao(Cocoabutter)">
-        <hasChemicalNature rdf:resource="https://purl.org/ontocosmetic#vegetable_oil"/>
-        <hasOrigin rdf:resource="https://purl.org/ontocosmetic#natural_raw_material"/>
-        <hasINCIcode>Theobroma cacao (Cocoa butter)</hasINCIcode>
-        <hasPricePerKilogram rdf:datatype="http://www.w3.org/2001/XMLSchema#float">20.2</hasPricePerKilogram>
-        <hasRequiredHLB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</hasRequiredHLB>
-        <rdfs:label>Theobroma cacao (Cocoa butter)</rdfs:label>
-    </owl:NamedIndividual>
     
 
 
@@ -5594,6 +5691,8 @@ It is related to the sensorial term of thickness.</rdfs:comment>
             <rdf:Description rdf:about="https://purl.org/ontocosmetic#waterly"/>
         </owl:distinctMembers>
     </rdf:Description>
+    
+
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -5613,15 +5712,6 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="https://purl.org/ontocosmeticqte">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="urn:swrl:var#formul">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="urn:swrl:var#stab">
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="urn:swrl:var#dos">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="urn:swrl:var#ontocosmeticdos">

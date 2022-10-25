@@ -66,9 +66,10 @@ def formulation(iri):
     data['stability'] = Formulation.hasProductStability
     data['oiliness'] = Formulation.hasProductOiliness
     data['viscosity'] = Formulation.hasProductViscosity
+    data['price'] = Formulation.hasTotalPrice
     for Dosage in dosages:
         tmp_dosage = {}
-        tmp_dosage['ing'] = Dosage.hasIngredient
+        tmp_dosage['ing'] = Dosage.isQuantifying
         tmp_dosage['qte'] = Dosage.hasQuantity
         dos.append(tmp_dosage)
     data['dosages'] = dos
@@ -187,13 +188,14 @@ def getHeuristic(propertyIRI, valueIRI = None):
 def completeWithWater(formulation):
     totalQuantity = 0.0
     completingWater = onto.Dosage(f"dosage_{uuid.uuid4()}")
-    completingWater.hasIngredient = [onto.water]
+    completingWater.isQuantifying = onto.water
 
     listDosages = formulation.hasDosage
     for dosage in listDosages:
         if dosage.hasQuantity:
             totalQuantity += dosage.hasQuantity
-        if onto.water.iri in dosage.hasIngredient:
+        print(dosage.isQuantifying)
+        if onto.water.iri == dosage.isQuantifying:
             #TODO verifier le comportement
             destroy_entity(completingWater)
             completingWater = dosage
@@ -262,7 +264,7 @@ def calculateThickenerQuantity(formulation):
     listDosages = formulation.hasDosage
     for dosage in listDosages:
         #ings = dosage.hasIngredient
-        if onto.Thickener.iri in dosage.hasIngredient[0].is_a:
+        if onto.Thickener.iri in dosage.isQuantifying[0].is_a:
             thickenerQte += dosage.hasQuantity[0]
     formulation.hasTotalThickenerQuantity.append(thickenerQte) 
 
@@ -271,7 +273,7 @@ def countNbSurfactant(formulation):
     
     listDosages = formulation.hasDosage
     for dosage in listDosages:
-        if onto.Surfactant.iri in dosage.hasIngredient[0].is_a:
+        if onto.Surfactant.iri in dosage.isQuantifying[0].is_a:
             nbSurfactant +=1
     formulation.hasNbSurfactantIng.append(nbSurfactant)
 
@@ -280,9 +282,19 @@ def calculateSurfactantQuantity(formulation):
     listDosages = formulation.hasDosage
     for dosage in listDosages:
         #ings = dosage.hasIngredient
-        if onto.Surfactant.iri in dosage.hasIngredient[0].is_a:
+        if onto.Surfactant.iri in dosage.isQuantifying[0].is_a:
             sufactVol += dosage.hasQuantity[0]
     formulation.hasTotalSurfactantQuantity = sufactVol
+
+def calculatePrice(formulationIRI):
+    listDosages = formulationIRI.hasDosage
+    tempPrice = 0
+    for dosage in listDosages:
+        Ingredient = dosage.isQuantifying
+        print(Ingredient)
+        print(Ingredient.hasPricePerKilogram)
+        tempPrice = tempPrice + float(Ingredient.hasPricePerKilogram if Ingredient.hasPricePerKilogram else 0) * float(dosage.hasQuantity if dosage.hasQuantity else 0 )
+    formulationIRI.hasTotalPrice = tempPrice
 
 def saveFomulation(ingredients_iri, ingredients_qte):
     if len(ingredients_iri) != len(ingredients_qte):
@@ -299,7 +311,7 @@ def saveFomulation(ingredients_iri, ingredients_qte):
                 print(tmp_dosage)
                 ing = IRIS[ingredients_iri[i]]
                 print(ing)
-                tmp_dosage.hasIngredient.append(ing)
+                tmp_dosage.isQuantifying.append(ing)
                 tmp_dosage.hasQuantity = float(ingredients_qte[i])
                 new_formul.hasDosage.append(tmp_dosage)
             completeWithWater(new_formul)
@@ -318,6 +330,8 @@ def actionOnFormulation(iri, ONTO_ID, action):
     
     if action == "water":
         completeWithWater(Formulation)
+    elif action =="price":
+        calculatePrice(Formulation)
     elif action =="reasoning":
         with onto_tmp:
             sync_reasoner_pellet([onto, onto_tmp], infer_property_values = True, infer_data_property_values = True)
