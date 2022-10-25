@@ -273,9 +273,9 @@ def countNbSurfactant(formulation):
     
     listDosages = formulation.hasDosage
     for dosage in listDosages:
-        if onto.Surfactant.iri in dosage.isQuantifying[0].is_a:
+        if type(dosage.isQuantifying) is onto.Surfactant:
             nbSurfactant +=1
-    formulation.hasNbSurfactantIng.append(nbSurfactant)
+    formulation.hasNbSurfactantIng = nbSurfactant
 
 def calculateSurfactantQuantity(formulation):
     sufactVol = 0.0
