@@ -8,8 +8,6 @@ onto = get_ontology("./app/static/OntoCosmetic-40-all.owl").load()
 def format(value):
     if value:
         if type(value) is owlready2.prop.IndividualValueList or type(value) is List:
-            # print(type(value.first()))
-            # print(value.first())
             return ", ".join(value)
         else:
             return value
@@ -18,22 +16,29 @@ def format(value):
 
 def getLabels(IRIs):
     if IRIs:
-        print(IRIs)
-        print(type(IRIs))
         if type(IRIs) is owlready2.prop.IndividualValueList or type(IRIs) is list:
             iri_label = ""
             for iri in IRIs:
                 if iri.label.en.first():
-                    iri_label = ", ".join([iri_label, iri.label.en.first()])
-                    print(f"label {iri.label.en.first()}")
+                    if len(IRIs)>1:
+                        iri_label += f"{iri.label.en.first()}, "
+                    else:
+                        iri_label = iri.label.en.first()
                 elif iri.name:
-                    iri_label = ", ".join([iri_label, iri.name])
-                    print(f"name {iri.name}")
+                    if len(IRIs)>1:
+                        iri_label += f"{iri.name}, "
+                    else:
+                        iri_label = iri.name
                 elif iri.iri:
-                    iri_label = ", ".join([iri_label, iri.iri])
-                    print(f"iri {iri.iri}")
+                    if len(IRIs)>1:
+                        iri_label += f"{iri.iri}, "
+                    else:
+                        iri_label = iri.iri
                 else:
-                    iri_label = ", ".join([iri_label, iri])
+                    if len(IRIs)>1:
+                        iri_label += f"{iri}, "
+                    else:
+                        iri_label = iri
             return iri_label
         else:
             try: 
@@ -85,8 +90,8 @@ def getHeurValidatedByFormulation():
         formul_valid_temp = {}
         formul_valid_temp['name'] = formul.name
         for heur in heuristics:
-            if heur.iri in validatedHeur:
-                formul_valid_temp[heur.name] = "ok"
+            if heur in validatedHeur:
+                formul_valid_temp[heur.name] = "✔"
             else:
                 formul_valid_temp[heur.name] = "-"
         data.append(formul_valid_temp)
@@ -153,8 +158,6 @@ def heuristics():
         tmp_heuristic['ingType'] = getLabels(Heuristic.hasHeuristicIngType)
         tmp_heuristic['ingProperty'] = getLabels(Heuristic.hasHeuristicIngProp)
         tmp_heuristic['ingPropertyValue'] = Heuristic.hasIngredientPropertyState
-        #for product_property in Heuristic.hasHeuristicProdProp:
-        #    tmp_heuristic['prodProperty'] = getLabels(product_property)
         tmp_heuristic['prodProperty'] = Heuristic.hasHeuristicProdProp
         tmp_heuristic['prodPropertyValue'] = Heuristic.hasHeuristicProductPropertyState
         data.append(tmp_heuristic)
@@ -169,7 +172,6 @@ def properties():
         tmp_property['name'] = property.name
         tmp_property['description'] = property.comment.en.first()
         tmp_property['substanceType'] = format(property.isPropertyOf.first())
-        #tmp_property['values'] = 
         data.append(tmp_property)
     return data
 
@@ -430,9 +432,7 @@ def saveFomulation(ingredients_iri, ingredients_qte):
             new_formul = onto.Formulation(f"fomulation_{formulationID}")
             for i in range(len(ingredients_iri)):
                 tmp_dosage = onto.Dosage(f"dosage_{uuid.uuid4()}")
-                print(tmp_dosage)
                 ing = IRIS[ingredients_iri[i]]
-                print(ing)
                 tmp_dosage.isQuantifying.append(ing)
                 tmp_dosage.hasQuantity = float(ingredients_qte[i])
                 new_formul.hasDosage.append(tmp_dosage)
