@@ -331,6 +331,28 @@ def calculateOilyPhaseQuantity(formulation):
             oilyPhaseQte += dosage.hasQuantity
     formulation.hasTotalOilyPhase = float(oilyPhaseQte)
 
+def calculteEmolSpreading(formulation):
+    lowSpreadinQte = 0.0
+    medSpreadingQte = 0.0
+    highSpreadingQte = 0.0
+    listDosages = formulation.hasDosage
+    for dosage in listDosages:
+        ing = dosage.isQuantifying
+        if onto.low_spreading in ing.hasSpreading:
+            lowSpreadinQte += dosage.hasQuantity
+        elif onto.medium_to_low_spreading in ing.hasSpreading:
+            lowSpreadinQte += dosage.hasQuantity
+        elif onto.medium_spreading in ing.hasSpreading:
+            medSpreadingQte += dosage.hasQuantity
+        elif onto.medium_to_high_spreading in ing.hasSpreading:
+            highSpreadingQte += dosage.hasQuantity
+        elif onto.high_spreading in ing.hasSpreading:
+            highSpreadingQte += dosage.hasQuantity
+    formulation.hasHighAbsEmolQte = lowSpreadinQte
+    formulation.hasMedAbsEmolQte = medSpreadingQte
+    formulation.hasLowAbsEmolQte = highSpreadingQte
+
+
 def calculateThickenerQuantity(formulation):
     thickenerQte = 0.0
     listDosages = formulation.hasDosage
@@ -436,6 +458,8 @@ def actionOnFormulation(iri, ONTO_ID, action):
         calculateHLBoverRHLB(Formulation)
     elif action =="oiliness":
         calculateOilyPhaseQuantity(Formulation)
+    elif action =="emolAbs":
+        calculteEmolSpreading(Formulation)
     elif action =="reasoning":
         with onto:
             sync_reasoner_pellet([onto], infer_property_values = True, infer_data_property_values = True)

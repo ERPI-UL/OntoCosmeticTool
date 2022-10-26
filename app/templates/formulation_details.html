@@ -117,6 +117,12 @@
             <input class="btn btn-primary text-white"  type="submit" value="Calculate oily phase">
         </form>
     </div>
+    <div class="col-sm text-center">
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
+            <input type="hidden" id="action" name="action" value="emolAbs">
+            <input class="btn btn-primary text-white"  type="submit" value="Calculate emol repartition">
+        </form>
+    </div>
 </div>
 <div class="row">
     
