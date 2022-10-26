@@ -2,7 +2,7 @@
 {% from 'bootstrap5/table.html' import render_table %}
 
 {% macro format(value) -%}
-    {% if value %}
+    {% if value is not none %}
         {% if value is iterable and (value is not string and value is not mapping) %}
         {{ value|join(', ') }}
         {% else %}

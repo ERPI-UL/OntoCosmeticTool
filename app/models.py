@@ -18,7 +18,9 @@ def format(value):
 
 def getLabels(IRIs):
     if IRIs:
-        if type(IRIs) is list:
+        print(IRIs)
+        print(type(IRIs))
+        if type(IRIs) is owlready2.prop.IndividualValueList or type(IRIs) is list:
             iri_label = ""
             for iri in IRIs:
                 if iri.label.en.first():
@@ -59,6 +61,37 @@ def formulations():
         data.append(tmp_formulation)
     return data
 
+def getFormulationProp():
+    data = []
+    formulations = onto.Formulation.instances()
+    for formul in formulations:
+        tmp_formulation = {}
+        tmp_formulation['iri'] = formul.iri
+        tmp_formulation['name'] = formul.name
+        tmp_formulation['stability'] = getLabels(formul.hasProductStability)
+        tmp_formulation['oiliness'] = formul.hasProductOiliness
+        tmp_formulation['viscosity'] = formul.hasProductViscosity
+        tmp_formulation['absorption'] = formul.hasProductAbsorptionRate
+        tmp_formulation['sensorialProfile'] = formul.hasSensorialProfile
+        data.append(tmp_formulation)
+    return data
+
+def getHeurValidatedByFormulation():
+    data = []
+    heuristics = onto.Heuristic.instances()
+    formulations = onto.Formulation.instances()
+    for formul in formulations:
+        validatedHeur = formul.isValidatedBy
+        formul_valid_temp = {}
+        formul_valid_temp['name'] = formul.name
+        for heur in heuristics:
+            if heur.iri in validatedHeur:
+                formul_valid_temp[heur.name] = "ok"
+            else:
+                formul_valid_temp[heur.name] = "-"
+        data.append(formul_valid_temp)
+    return data
+
 def formulation(iri):
     Formulation = IRIS[iri]
     dosages = Formulation.hasDosage
@@ -71,8 +104,8 @@ def formulation(iri):
     data['surfactNb']= Formulation.hasNbSurfactantIng
     data['oilyPhaseQte']= Formulation.hasTotalOilyPhase
     data['stability'] = getLabels(Formulation.hasProductStability)
-    data['oiliness'] = Formulation.hasProductOiliness
-    data['viscosity'] = Formulation.hasProductViscosity
+    data['oiliness'] = getLabels(Formulation.hasProductOiliness)
+    data['viscosity'] = getLabels(Formulation.hasProductViscosity)
     data['price'] = Formulation.hasTotalPrice
     data['HLB'] = Formulation.hasCalculatedHLB
     data['RHLB'] = Formulation.hasCalculatedRHLB
