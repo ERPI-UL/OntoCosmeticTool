@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>OntoCosmetic Formulation Test</h1>
-<p>This demo uses the OntoCosmetic ontology to valisation formluation of cosmetic product.</p>
+
+<div class="p-5 mb-4 bg-light rounded-3" style="background-image: url('{{ url_for('static',filename = 'becher.jpg') }}'); background-size: cover; background-position: center;
+background-repeat: no-repeat;">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold" style="color: #FFFFFF;">OntoCosmetic Formulation Tool</h1>
+
+    </div>
+</div>
+
+<p>This demo uses the OntoCosmetic ontology to simulate formulation of cosmetic product. This web app aims to evaluate the feasibility of using ontology to assist formulator in their task with expert rules and inference engine. This app is based on OWLready2. </p>
+
 
 {% endblock %}
