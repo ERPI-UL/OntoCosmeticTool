@@ -49,6 +49,7 @@ def formulations():
         tmp_formulation['thickenerQte'] = formul.hasTotalThickenerQuantity
         tmp_formulation['surfactantNb'] = formul.hasNbSurfactantIng
         tmp_formulation['oilyPhaseQte'] = formul.hasTotalOilyPhase
+        tmp_formulation['price'] = formul.hasTotalPrice
         data.append(tmp_formulation)
     return data
 
@@ -63,7 +64,7 @@ def formulation(iri):
     data['thickenerQte']= Formulation.hasTotalThickenerQuantity
     data['surfactNb']= Formulation.hasNbSurfactantIng
     data['oilyPhaseQte']= Formulation.hasTotalOilyPhase
-    data['stability'] = Formulation.hasProductStability
+    data['stability'] = getLabels(Formulation.hasProductStability)
     data['oiliness'] = Formulation.hasProductOiliness
     data['viscosity'] = Formulation.hasProductViscosity
     data['price'] = Formulation.hasTotalPrice
@@ -72,7 +73,7 @@ def formulation(iri):
     data['ratio'] = Formulation.hasHlbOverRhlbRatio
     for Dosage in dosages:
         tmp_dosage = {}
-        tmp_dosage['ing'] = Dosage.isQuantifying
+        tmp_dosage['ing'] = Dosage.isQuantifying.name
         tmp_dosage['qte'] = Dosage.hasQuantity
         dos.append(tmp_dosage)
     data['dosages'] = dos

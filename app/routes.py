@@ -8,14 +8,15 @@ ONTO_ID = 0
 def page_index():
     return render_template('index.html')
 
-@app.route('/formulations', methods=['GET'])
+@app.route('/formul/list', methods=['GET'])
 def page_formulations():
-    titles = [('name','Name'), ('surfactantQte','Total Surfactant Qte'), ('thickenerQte','Total Thickener Qte'),('surfactantNb','Nb Surfactant'), ('oilyPhaseQte','Total Oily Phase')]
+    titles = [('name','Name'), ('surfactantQte','Total Surfactant Qte'), ('thickenerQte','Total Thickener Qte'),('surfactantNb','Nb Surfactant'), ('oilyPhaseQte','Total Oily Phase'), ('price','Price (per Kg)')]
     data = models.formulations()
     return render_template('formulations.html', titles= titles, data= data, show_actions=True, new_url=url_for('page_formul_new'))
 
-@app.route('/formul/<path:iri>', methods=['GET', 'POST'])
-def page_formul_details(iri):
+@app.route('/formul/<path:name>', methods=['GET', 'POST'])
+def page_formul_details(name):
+    iri = f"https://purl.org/ontocosmetic#{name}"
 
     global ONTO_ID
     ONTO_ID = ONTO_ID + 1
@@ -28,7 +29,7 @@ def page_formul_details(iri):
 
     return render_template('formulation_details.html', formul= formulation_data, heur = heuristics_data)
 
-@app.route('/formulation/new', methods=['GET', 'POST'])
+@app.route('/formul/new', methods=['GET', 'POST'])
 def page_formul_new():
 
     if request.form.get("action_add", False):
@@ -71,7 +72,7 @@ def page_heuristics():
     data = models.heuristics()
     return render_template('heuristics.html',responsive=True, responsive_class='table-responsive-sm', titles= titles, data= data)
 
-@app.route('/formulation/new_from_res', methods=['GET', 'POST'])
+@app.route('/formul/new_from_res', methods=['GET', 'POST'])
 def page_formul_from_res():
     selected = {}
     if request.form.get("get_heuristic", False):

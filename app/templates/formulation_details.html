@@ -75,37 +75,37 @@
 <h4>Quantity calculation</h4>
 <div class="row">
     <div class="col-sm">
-        <form action={{ url_for("page_formul_details", iri=formul.iri) }}>
+        <form action={{ url_for("page_formul_details", name=formul.name) }}>
             <input type="hidden" id="action" name="action" value="water">
             <input class="btn btn-primary text-white" type="submit" value="Calculate Water">
         </form>
     </div>
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="price">
             <input class="btn btn-primary text-white"  type="submit" value="Calculate Price">
         </form>
     </div>
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="surfactantQte">
             <input class="btn btn-primary text-white"  type="submit" value="Calculate Surfactant Quantity">
         </form>
     </div>
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="surfactantNb">
             <input class="btn btn-primary text-white"  type="submit" value="Count Surfactant Number">
         </form>
     </div>
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="thickenerQte">
             <input class="btn btn-primary text-white"  type="submit" value="Calculate Thickener Quantity">
         </form>
     </div>
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="HLB">
             <input class="btn btn-primary text-white"  type="submit" value="Calculate Emollient & Surfactant balance">
         </form>
@@ -115,13 +115,13 @@
 <h4>Misc</h4>
 <div class="row">
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="reasoning">
             <input class="btn btn-primary text-white"  type="submit" value="Reasoning">
         </form>
     </div>
     <div class="col-sm">
-        <form action={{url_for("page_formul_details", iri=formul.iri)}}>
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
             <input type="hidden" id="action" name="action" value="save">
             <input class="btn btn-primary text-white"  type="submit" value="Save Onto">
         </form>

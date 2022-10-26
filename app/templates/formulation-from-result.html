@@ -28,7 +28,7 @@
         <div class="col"><label class="form-label" for="product_property_value_select">Which value you expect for this product property
             ?</label></div>
             <div class="col"><select name="product_property_value" id="product_property_value_select" class="form-control"
-            aria-label="Select product property value" onload="filter({{properties_values_data}})">
+            aria-label="Select product property value" onload="filter( {{ properties_values_data }} )">
             <option value="">-- Select a property --</option>
             {% for val in properties_values_data['all'] %}
             {% if selected_data.value == val.iri %}

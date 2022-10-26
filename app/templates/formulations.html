@@ -71,7 +71,7 @@
             {%- endif -%}
             {% endfor %}
             <td>
-                <a class="action-icon text-decoration-none" href="{{url_for('page_formul_details', iri = row['iri'])}}" title="{{ config['BOOTSTRAP_TABLE_VIEW_TITLE'] }}">{{ render_icon('eye-fill') }}</a>
+                <a class="action-icon text-decoration-none" href="{{url_for('page_formul_details', name = row['name'])}}" title="{{ config['BOOTSTRAP_TABLE_VIEW_TITLE'] }}">{{ render_icon('eye-fill') }}</a>
             </td>
         </tr>
         {% endfor %}
