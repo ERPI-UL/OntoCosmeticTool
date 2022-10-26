@@ -24,6 +24,9 @@ def getLabels(IRIs):
                 if iri.label.en.first():
                     iri_label = ", ".join([iri_label, iri.label.en.first()])
                     print(f"label {iri.label.en.first()}")
+                elif iri.name:
+                    iri_label = ", ".join([iri_label, iri.name])
+                    print(f"name {iri.name}")
                 elif iri.iri:
                     iri_label = ", ".join([iri_label, iri.iri])
                     print(f"iri {iri.iri}")
@@ -32,7 +35,10 @@ def getLabels(IRIs):
             return iri_label
         else:
             try: 
-                return IRIs.label.en.first()
+                if IRIs.label:
+                    return IRIs.label.en.first()
+                else:
+                    return IRIs.name
             except:
                 return IRIs
     else:
@@ -78,6 +84,18 @@ def formulation(iri):
         dos.append(tmp_dosage)
     data['dosages'] = dos
     return data
+
+def getDosages(formulIRI):
+    Formulation = IRIS[formulIRI]
+    dosages = Formulation.hasDosage
+    data = []
+    for dosage in dosages:
+        temp = {}
+        temp['iri'] = dosage.isQuantifying.iri
+        temp['qte'] = dosage.hasQuantity
+        data.append(temp)
+    return data
+
 
 def heuristicsValidatedByFormulation(iri):
     Formulation = IRIS[iri]
@@ -216,7 +234,7 @@ def completeWithWater(formulation):
     completingWater.hasQuantity = float(waterQte)
     formulation.hasDosage.append(completingWater)  
 
-def listerIngredientsPerType():
+def listIngredientsPerType():
     data = {}
     Thickeners = onto.Thickener.instances()
     thickenersList = []
@@ -225,6 +243,8 @@ def listerIngredientsPerType():
         tmp_thickener['iri'] = thickener.iri
         if thickener.hasINCIcode:
             tmp_thickener['inci'] = thickener.hasINCIcode[0]
+        else: 
+            tmp_thickener['inci'] = thickener.name
         thickenersList.append(tmp_thickener)
     thickenersList.sort(key=lambda d: d['inci'])
     data['thickeners'] = thickenersList
@@ -236,6 +256,8 @@ def listerIngredientsPerType():
         tmp_surfactant['iri'] = surfactant.iri
         if surfactant.hasINCIcode:
             tmp_surfactant['inci'] = surfactant.hasINCIcode[0]
+        else: 
+            tmp_surfactant['inci'] = surfactant.name
         surfactantsList.append(tmp_surfactant)
     surfactantsList.sort(key=lambda d: d['inci'])
     data['surfactants'] = surfactantsList
@@ -247,6 +269,8 @@ def listerIngredientsPerType():
         tmp_emollient['iri'] = emollient.iri
         if emollient.hasINCIcode : 
             tmp_emollient['inci'] = emollient.hasINCIcode[0]
+        else: 
+            tmp_emollient['inci'] = emollient.name
         emollientsList.append(tmp_emollient)
     emollientsList.sort(key=lambda d: d['inci'])
     data['emollients'] = emollientsList
@@ -258,6 +282,8 @@ def listerIngredientsPerType():
         tmp_active['iri'] = active.iri
         if active.hasINCIcode : 
             tmp_active['inci'] = active.hasINCIcode[0]
+        else: 
+            tmp_active['inci'] = active.name
         activesList.append(tmp_active)
     activesList.sort(key=lambda d: d['inci'])
     data['active'] = activesList
@@ -270,7 +296,7 @@ def calculateOilyPhaseQuantity(formulation):
     for dosage in listDosages:
         if len(dosage.hasPhase) and onto.oily_phase.iri in dosage.hasPhase[0].is_a:
             oilyPhaseQte += dosage.hasQuantity
-    formulation.hasTotalOilyPhase.append(oilyPhaseQte)
+    formulation.hasTotalOilyPhase = float(oilyPhaseQte)
 
 def calculateThickenerQuantity(formulation):
     thickenerQte = 0.0
@@ -375,9 +401,11 @@ def actionOnFormulation(iri, ONTO_ID, action):
         calculatePrice(Formulation)
     elif action =="HLB":
         calculateHLBoverRHLB(Formulation)
+    elif action =="oiliness":
+        calculateOilyPhaseQuantity(Formulation)
     elif action =="reasoning":
-        with onto_tmp:
-            sync_reasoner_pellet([onto, onto_tmp], infer_property_values = True, infer_data_property_values = True)
+        with onto:
+            sync_reasoner_pellet([onto], infer_property_values = True, infer_data_property_values = True)
     elif action =="thickenerQte":
         with onto_tmp:
             calculateThickenerQuantity(Formulation)

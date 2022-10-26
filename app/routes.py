@@ -62,9 +62,55 @@ def page_formul_new():
     else:
         formulation = []
         
-    ingredients = models.listerIngredientsPerType()
+    ingredients = models.listIngredientsPerType()
     ing_types = list(ingredients.keys())
     return render_template('formulation_new.html', ingredients = ingredients, ing_types= ing_types, formulation = formulation)
+
+""" @app.route('/formul/fork', methods=['GET', 'POST'])
+def page_formul_fork():
+    #copy
+    return render_template('formulation_edit.html', ingredients = ingredients, ing_types= ing_types, formulation = formulation) """
+
+@app.route('/formul/<path:name>/edit', methods=['GET', 'POST'])
+def page_formul_edit(name):
+
+    formulIRI = f"https://purl.org/ontocosmetic#{name}"
+    formulname= models.getLabels(formulIRI)
+
+
+    if request.form.get("action_add", False):
+        nbDosage = request.form.get("nbDosages", 0)
+        iris= []
+        quantities = []
+        for dosageId in range(1,int(nbDosage)+1):        
+            iris.append(request.form.get(f"iri{dosageId}", ""))
+            quantities.append(request.form.get(f"quantity{dosageId}", ""))
+        iris.append(request.form.get("iri_last", ""))
+        quantities.append(request.form.get("quantity_last", ""))
+        formulation = []
+        for i in range(len(iris)):
+            formulation.append({'iri': iris[i], 'qte': quantities[i]})
+
+    elif request.form.get("action_save", False):
+        nbDosage = request.form.get("nbDosages", 0)
+        iris= []
+        quantities = []
+        for dosageId in range(1,int(nbDosage)+1):        
+            iris.append(request.form.get(f"iri{dosageId}", ""))
+            quantities.append(request.form.get(f"quantity{dosageId}", ""))
+        iris.append(request.form.get("iri_last")) if request.form.get("iri_last") else None
+        quantities.append(request.form.get("quantity_last")) if request.form.get("quantity_last") else None
+        print(iris)
+        print(quantities)
+        models.saveFomulation(iris, quantities)
+        formulation = []
+        flash('Formulation has been updated.', 'info')
+    else:
+        formulation = models.getDosages(formulIRI)
+        
+    ingredients = models.listIngredientsPerType()
+    ing_types = list(ingredients.keys())
+    return render_template('formulation_edit.html', ingredients = ingredients, ing_types= ing_types, formulation = formulation, formulname=formulname)
 
 @app.route('/heuristics', methods=['GET'])
 def page_heuristics():
