@@ -123,6 +123,12 @@
             <input class="btn btn-primary text-white"  type="submit" value="Calculate emol repartition">
         </form>
     </div>
+    <div class="col-sm text-center">
+        <form action={{url_for("page_formul_details", name=formul.name)}}>
+            <input type="hidden" id="action" name="action" value="all">
+            <input class="btn btn-warning text-white"  type="submit" value="Calculate everything">
+        </form>
+    </div>
 </div>
 <div class="row">
     

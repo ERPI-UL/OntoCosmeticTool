@@ -460,11 +460,20 @@ def actionOnFormulation(iri, ONTO_ID, action):
         calculateOilyPhaseQuantity(Formulation)
     elif action =="emolAbs":
         calculteEmolSpreading(Formulation)
+    elif action =="all":
+        completeWithWater(Formulation)
+        calculatePrice(Formulation)
+        calculateHLBoverRHLB(Formulation)
+        calculateOilyPhaseQuantity(Formulation)
+        calculteEmolSpreading(Formulation)
+        calculateThickenerQuantity(Formulation)
+        calculateSurfactantQuantity(Formulation)
+        countNbSurfactant(Formulation)
     elif action =="reasoning":
         with onto:
             sync_reasoner_pellet([onto], infer_property_values = True, infer_data_property_values = True)
     elif action =="thickenerQte":
-        with onto_tmp:
+        with onto:
             calculateThickenerQuantity(Formulation)
     elif action =="surfactantQte":
         calculateSurfactantQuantity(Formulation)
