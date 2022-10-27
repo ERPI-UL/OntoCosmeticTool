@@ -12,9 +12,9 @@ def page_index():
 def page_formulations():
     titles_prop = [('name','Formulation'), ('stability','Stability'), ('oiliness','Oiliness'),('viscosity','Viscosity'), ('absorption','Absorption rate'), ('sensorialProfile','Sensorial profile')]
     data_prop = models.getFormulationProp()
-    titles_heur = [('name','Name'), ('A1','A1'), ('A2','A2'),('A3','A3'), ('B11','B11'), ('B12','B12'), ('B13','B13'), ('C11','C11'), ('C12','C12'), ('C2','C2'), ('C21','C21'), ('C21','C21'), ('C23','C23'), ('C31','C31'), ('C32','C32'), ('C33','C33'), ('C4','C4'), ('C5','C5'), ('C6','C6'), ('C7','C7'), ('C8','C8')]
+    titles_heur = [('name','Name'), ('A1','A1'), ('A2','A2'),('A3','A3'), ('B11','B11'), ('B12','B12'), ('B13','B13'), ('C11','C11'), ('C12','C12'), ('C2','C2'), ('C21','C21'), ('C22','C22'), ('C23','C23'), ('C31','C31'), ('C32','C32'), ('C33','C33'), ('C4','C4'), ('C5','C5'), ('C6','C6'), ('C7','C7'), ('C8','C8')]
     data_heur = models.getHeurValidatedByFormulation()
-    titles_spec = [('name','Name'), ('surfactantQte','Total Surfactant Qte'), ('thickenerQte','Total Thickener Qte'),('surfactantNb','Nb Surfactant'), ('oilyPhaseQte','Total Oily Phase'), ('price','Price ($US per Kg)')]
+    titles_spec = [('name','Name'),('price','Price ($US per Kg)'), ('surfactantQte','Total Surfactant Qte'),('surfactantNb','Nb Surfactant'), ('thickenerQte','Total Thickener Qte'), ('oilyPhaseQte','Total Oily Phase'),('ratio','HLB/RHLB balance'),('highEmolQte','High emollience qte'),('medEmolQte','Med emollience qte'),('lowEmolQte','Low emollience qte') ]
     data_spec = models.formulations()
     return render_template('formulations.html', titles_prop = titles_prop, data_prop= data_prop,titles_heur = titles_heur, data_heur= data_heur, titles_spec= titles_spec, data_spec= data_spec, show_actions=True, new_url=url_for('page_formul_new'))
 

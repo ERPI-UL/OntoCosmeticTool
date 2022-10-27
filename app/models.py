@@ -63,6 +63,10 @@ def formulations():
         tmp_formulation['surfactantNb'] = formul.hasNbSurfactantIng
         tmp_formulation['oilyPhaseQte'] = formul.hasTotalOilyPhase
         tmp_formulation['price'] = formul.hasTotalPrice
+        tmp_formulation['ratio'] = formul.hasHlbOverRhlbRatio
+        tmp_formulation['highEmolQte'] = formul.hasHighAbsEmolQte
+        tmp_formulation['medEmolQte'] = formul.hasMedAbsEmolQte
+        tmp_formulation['lowEmolQte'] = formul.hasLowAbsEmolQte
         data.append(tmp_formulation)
     return data
 
