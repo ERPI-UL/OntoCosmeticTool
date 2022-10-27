@@ -74,10 +74,10 @@ def getFormulationProp():
         tmp_formulation['iri'] = formul.iri
         tmp_formulation['name'] = formul.name
         tmp_formulation['stability'] = getLabels(formul.hasProductStability)
-        tmp_formulation['oiliness'] = formul.hasProductOiliness
-        tmp_formulation['viscosity'] = formul.hasProductViscosity
-        tmp_formulation['absorption'] = formul.hasProductAbsorptionRate
-        tmp_formulation['sensorialProfile'] = formul.hasSensorialProfile
+        tmp_formulation['oiliness'] = getLabels(formul.hasProductOiliness)
+        tmp_formulation['viscosity'] = getLabels(formul.hasProductViscosity)
+        tmp_formulation['absorption'] = getLabels(formul.hasProductAbsorptionRate)
+        tmp_formulation['sensorialProfile'] = getLabels(formul.hasSensorialProfile)
         data.append(tmp_formulation)
     return data
 
