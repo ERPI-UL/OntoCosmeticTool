@@ -45,23 +45,23 @@
     </tr>
     <tr>
         <td>Total Oily Phase</td>
-        <td>{{ format(formul.oilyPhaseQte)}}</td>
+        <td>{{ '%0.2f' % format(formul.oilyPhaseQte)|float }}</td>
     </tr>
     <tr>
         <td>Formulation price (for 1 Kg)</td>
-        <td>{{ format(formul.price)}}</td>
+        <td>{{ '%0.2f' % format(formul.price)|float }}</td>
     </tr>
     <tr>
         <td>Formulation HLB</td>
-        <td>{{ format(formul.HLB)}}</td>
+        <td>{{ '%0.2f' % format(formul.HLB)|float }}</td>
     </tr>
     <tr>
         <td>Formulation Required HLB</td>
-        <td>{{ format(formul.RHLB)}}</td>
+        <td>{{ '%0.2f' % format(formul.RHLB)|float }}</td>
     </tr>
     <tr>
         <td>Emollient/surfacant balance (HLB/RHLB)</td>
-        <td>{{ format(formul.ratio)}}</td>
+        <td>{{ '%0.2f' % format(formul.ratio)|float }}</td>
     </tr>
 </table>
 

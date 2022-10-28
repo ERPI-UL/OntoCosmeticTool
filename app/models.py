@@ -1,4 +1,3 @@
-from ast import Try
 import os
 from typing import List
 import uuid
@@ -146,7 +145,7 @@ def heuristicsValidatedByFormulation(iri):
     for Heuristic in heuristics:
         tmp_heur = {}
         tmp_heur['id'] = Heuristic.name
-        tmp_heur['description'] = Heuristic.hasHeuristicDescription
+        tmp_heur['description'] = format(Heuristic.hasHeuristicDescription)
         tmp_heur['prodProperty'] = Heuristic.hasHeuristicProdProp
         heurs.append(tmp_heur)
     return heurs
@@ -177,6 +176,57 @@ def properties():
         tmp_property['description'] = property.comment.en.first()
         tmp_property['substanceType'] = format(property.isPropertyOf.first())
         data.append(tmp_property)
+    return data
+
+def getRecommendedIngredients(heuristics):
+    data = {}
+    for heuristic in heuristics:
+        heurName = heuristic['name'].name
+        resp = []              
+        if heurName == "C8":
+            resp = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?ing 
+WHERE { ?ing cosme:hasLongChainsAndNoDoubleBonds ?val.
+    }"""))
+        elif heurName == "C7": 
+            resp = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?ing 
+WHERE { ?ing cosme:hasLaurylOleylGroup ?val.
+    }"""))
+        elif heurName == "C6":
+            resp = [['Octyldodecanol']]
+        elif heurName == "C5":
+            resp = [['cetearyl'],['stearyl'],['cetyl ']]
+        elif heurName == "C21":
+            resp = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?ing 
+WHERE { ?ing cosme:hasSpreading cosme:high_spreading.
+    }"""))
+        elif heurName == "C22":
+            resp = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?ing 
+WHERE { ?ing cosme:hasSpreading cosme:medium_spreading.
+    }"""))
+        elif heurName == "C23":
+            resp = list(default_world.sparql("""
+    PREFIX cosme: <https://purl.org/ontocosmetic#> 
+           SELECT DISTINCT ?ing 
+WHERE { ?ing cosme:hasSpreading cosme:low_spreading.
+    }"""))
+        ingList= []
+        if resp:
+            for property in resp:
+                try:
+                    ingList.append(property[0].name)
+                except:
+                    ingList.append(property[0])
+            data[heuristic['name']]=ingList
+        else:
+            data[heuristic['name']]=[]
     return data
 
 def getProductPropOfHeuristic():
@@ -227,7 +277,7 @@ def getHeuristic(propertyIRI, valueIRI = None):
     if valueIRI:
         sparql = list(default_world.sparql("""
         PREFIX cosme: <https://purl.org/ontocosmetic#> 
-            SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue 
+            SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue ?heur
     WHERE { ?heur cosme:hasHeuristicProdProp cosme:"""+property[1]+""" ;
         cosme:hasHeuristicProductPropertyState cosme:"""+state[1]+""";
         cosme:hasHeuristicDescription ?heurDescription.
@@ -238,7 +288,7 @@ def getHeuristic(propertyIRI, valueIRI = None):
     else:
         sparql = list(default_world.sparql("""
         PREFIX cosme: <https://purl.org/ontocosmetic#> 
-            SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue 
+            SELECT DISTINCT ?heurDescription ?ingType ?ingProperty ?ingValue ?heur
     WHERE { ?heur cosme:hasHeuristicProdProp cosme:"""+property[1]+""" ;
         cosme:hasHeuristicDescription ?heurDescription.
         OPTIONAL { ?heur cosme:hasHeuristicIngType ?ingType.}
@@ -251,6 +301,7 @@ def getHeuristic(propertyIRI, valueIRI = None):
         tmp_value['ingType'] = resp[1]
         tmp_value['ingProperty'] = resp[2]
         tmp_value['ingValue'] = resp[3]
+        tmp_value['name'] = resp[4]
         data.append(tmp_value)
     
     return data

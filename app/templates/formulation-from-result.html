@@ -2,6 +2,29 @@
 {% from 'base/utils.html' import render_icon%}
 
 {% block content %}
+<script>
+    var toggled = false
+    function toggleBtnIcon(id) {
+        var btn = document.getElementById('icon-btn-' + id);
+        toggled = !toggled
+        if (toggled){
+            btn.innerHTML = '<svg class="bi" width="1em" height="1em" fill="currentColor"> <use xlink:href="/bootstrap/static/icons/bootstrap-icons.svg#chevron-contract"/></svg>';            
+        }else{
+            btn.innerHTML = '<svg class="bi"  width="1em" height="1em" fill="currentColor"> <use xlink:href="/bootstrap/static/icons/bootstrap-icons.svg#chevron-expand"/></svg>';
+        }
+        
+    }
+    function filter(data) {
+        var selected_product_property = document.getElementById("product_property_select").value;
+        var options = ""
+        var product_property_values = data[selected_product_property]
+        product_property_values.forEach(value => {
+            options = options.concat("<option value='" + value['iri'] + "'>" + value['name'] + "</option>")
+        });
+        options = options.concat("<option value='' selected> - no value - </option>")
+        document.getElementById("product_property_value_select").innerHTML = options
+    }
+</script>
 <h1>Formulations from result</h1>
 
 <p>This aims to allow you to choose the feature/ property expected on the product and identify which formulation rule
@@ -69,6 +92,22 @@
             </td>
             <td>
                 {{ heuristic.ingValue }}
+            <td>
+                <button class="btn " type="button" id="icon-btn-{{loop.index}}" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{loop.index}}" aria-expanded="false" aria-controls="collapseExample" onclick="toggleBtnIcon({{loop.index}})" {% if not recommended_ing[heuristic.name] %} disabled{% endif %}>
+                   {{ render_icon('chevron-expand')}}
+                  </button>
+                
+            </td>
+        </tr>
+        <tr class="collapse" id="collapseExample-{{loop.index}}">
+            <td colspan="5">
+                <div class="card card-body">
+                    <p>
+                    {% for ing in recommended_ing[heuristic.name] %}
+                    {{ ing }}<br/>
+                    {% endfor %}
+                </p>
+                </div>
             </td>
         </tr>
         {% endfor %}
@@ -82,18 +121,7 @@
 </div>
 {% endif %}
 
-<script>
-    function filter(data) {
-        var selected_product_property = document.getElementById("product_property_select").value;
-        var options = ""
-        var product_property_values = data[selected_product_property]
-        product_property_values.forEach(value => {
-            options = options.concat("<option value='" + value['iri'] + "'>" + value['name'] + "</option>")
-        });
-        options = options.concat("<option value='' selected> - no value - </option>")
-        document.getElementById("product_property_value_select").innerHTML = options
-    }
-</script>
+
 
 
 {% endblock %}
