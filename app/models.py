@@ -384,7 +384,9 @@ def calculateOilyPhaseQuantity(formulation):
     oilyPhaseQte = 0.0
     listDosages = formulation.hasDosage
     for dosage in listDosages:
-        if len(dosage.hasPhase) and onto.oily_phase.iri in dosage.hasPhase[0].is_a:
+        Ingredient = dosage.isQuantifying
+        
+        if Ingredient.hasPhase and onto.oily_phase == Ingredient.hasPhase:
             oilyPhaseQte += dosage.hasQuantity
     formulation.hasTotalOilyPhase = float(oilyPhaseQte)
 
