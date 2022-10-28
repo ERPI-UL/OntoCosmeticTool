@@ -209,17 +209,19 @@
                             <td>
                                 {%- endif -%}
                                 {%- if value is string -%}
-                                {%- if safe_columns and key in safe_columns -%}
-                                {{ value|safe }}
+                                    {%- if safe_columns and key in safe_columns -%}
+                                    {{ value|safe }}
+                                    {%- else -%}
+                                        {%- if urlize_columns and key in urlize_columns -%}
+                                        {{ value|urlize }}
+                                        {%- else -%}
+                                        {{ format(value) }}
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                {%- elif value is float -%}
+                                    {{ '%0.3f' % format(value)|float }}
                                 {%- else -%}
-                                {%- if urlize_columns and key in urlize_columns -%}
-                                {{ value|urlize }}
-                                {%- else -%}
-                                {{ format(value) }}
-                                {%- endif -%}
-                                {%- endif -%}
-                                {%- else -%}
-                                {{ format(value) }}
+                                    {{ format(value) }}
                                 {%- endif -%}
                                 {%- if key == primary_key -%}
                                 </th>
