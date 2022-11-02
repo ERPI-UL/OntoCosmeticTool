@@ -1,3 +1,4 @@
+import time
 import os
 from typing import List
 import uuid
@@ -114,6 +115,8 @@ def formulation(iri):
     data['stability'] = getLabels(Formulation.hasProductStability)
     data['oiliness'] = getLabels(Formulation.hasProductOiliness)
     data['viscosity'] = getLabels(Formulation.hasProductViscosity)
+    data['absorption'] = getLabels(Formulation.hasProductAbsorptionRate)
+    data['sensorialProfile'] = getLabels(Formulation.hasSensorialProfile)
     data['price'] = Formulation.hasTotalPrice
     data['HLB'] = Formulation.hasCalculatedHLB
     data['RHLB'] = Formulation.hasCalculatedRHLB
@@ -385,7 +388,7 @@ def calculateOilyPhaseQuantity(formulation):
     listDosages = formulation.hasDosage
     for dosage in listDosages:
         Ingredient = dosage.isQuantifying
-        
+
         if Ingredient.hasPhase and onto.oily_phase == Ingredient.hasPhase:
             oilyPhaseQte += dosage.hasQuantity
     formulation.hasTotalOilyPhase = float(oilyPhaseQte)
@@ -527,8 +530,11 @@ def actionOnFormulation(iri, ONTO_ID, action):
         calculateSurfactantQuantity(Formulation)
         countNbSurfactant(Formulation)
     elif action =="reasoning":
+        start = time.time()
         with onto:
             sync_reasoner_pellet([onto], infer_property_values = True, infer_data_property_values = True)
+        end = time.time()
+        print(f"Reasoning time: {end - start}")
     elif action =="thickenerQte":
         with onto:
             calculateThickenerQuantity(Formulation)
