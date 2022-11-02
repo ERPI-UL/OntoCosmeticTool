@@ -1978,7 +1978,7 @@ It is related to the sensorial term of thickness.</rdfs:comment>
         <hasHeuristicProdProp rdf:resource="https://purl.org/ontocosmetic#absorption_rate"/>
         <hasHeuristicProductPropertyState rdf:resource="https://purl.org/ontocosmetic#med_absorption_rate"/>
         <hasIngredientPropertyState rdf:resource="https://purl.org/ontocosmetic#medium_spreading"/>
-        <hasHeuristicDescription xml:lang="en">If most of the emollients are of medium absorption, product absorption sensation is : medium</hasHeuristicDescription>
+        <hasHeuristicDescription xml:lang="en">If most of the emollients are of medium absorption, product absorption sensation is medium</hasHeuristicDescription>
         <hasHeuristicSource xml:lang="en">Heuristic</hasHeuristicSource>
     </owl:NamedIndividual>
     
