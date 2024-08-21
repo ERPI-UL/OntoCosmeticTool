@@ -11,13 +11,12 @@ WORKDIR $APP_HOME
 COPY . ./
 
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jre-headless && \
+#    apt-get install -y openjdk-11-jre && \
+    apt-get install -y default-jdk && \
     apt-get clean;
 
 # Install production dependencies.
 RUN pip install -r requirements.txt
-#RUN pip install cython 
-#RUN pip install owlready2 Flask mygene rdflib gunicorn
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
