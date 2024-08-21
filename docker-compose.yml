@@ -1,0 +1,11 @@
+services:
+  ontocosmetictool:
+    build: 
+      context: .
+    ports: 
+      - 5000:5000
+    networks:
+      - cosmetic_tool_net
+
+networks:
+  cosmetic_tool_net:

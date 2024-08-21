@@ -15,6 +15,22 @@ In order to start the application, there is two alternatives : using Docker or p
 
 ## Docker
 Here are the main commmands to start the app using docker. It requires to install Docker on the host machine.
+
+### with docker compose
+
+__These commands has to be done in the main folder containing the 'docker-compose.yml' file__
+
+```sh
+# create & start the container
+docker compose up -d
+
+# stop the container
+docker compose down
+```
+
+### without docker compose
+
+__These commands has to be done in the main folder containing the 'Dockerfile' file__
 ```sh
 # create the container
 docker build . -t ontocosmtool
@@ -43,7 +59,7 @@ pip install -r requirements.txt
 python3 run.py
 
 # stop the virtual environment
-docker stop OntoCosmTool
+deactivate
 ```
 
 ## Resources
