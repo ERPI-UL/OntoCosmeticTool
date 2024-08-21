@@ -3,7 +3,7 @@ import os
 from typing import List
 import uuid
 from owlready2 import *
-onto = get_ontology("./app/static/OntoCosmetic-40-all.owl").load()
+onto = get_ontology("./app/static/OntoCosmetic-41-all.owl").load()
 
 def format(value):
     if value:
